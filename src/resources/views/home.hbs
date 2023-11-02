@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Home
+</body>
+<script>
+    
+
+    function login() {
+            $.ajax({
+                url: '/login',
+                type: 'POST',
+                data: {
+                    email: $('#email').val(),
+                    password: $('#password').val() 
+                }
+            })
+            .done(function(data) {
+                console.log(data)
+                if (data.token) {
+                    setCookie('token', data.token, 1);
+                    // luu thong tin nguoi dung vao localstorage de xuat ra man hinh
+                    window.localStorage.setItem('name', data.user_name)
+                    if(data.role ==='manager') {
+                        window.location.href = './manager'; // trang muon dinh huong den sau khi dang nhap
+                    } else {
+                        // .....
+                    }
+                    
+                } else {
+                    $('#error_login').show();                
+                }        
+            })
+            .fail(function(err) {
+                console.log(err)
+            }) 
+            .always(function(data) {
+                var inputs = $('[name][rules]');
+                for(var input of inputs) {
+                    input.oninput = function(e) {
+                        $('#error_login').hide();
+                    }
+                }
+            })
+        }
+</script>
+</html>
