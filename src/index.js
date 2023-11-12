@@ -8,10 +8,21 @@ import jwt from 'jsonwebtoken'
 const app = express()
 const port = 3000
 
+import dotenv from 'dotenv';  
+dotenv.config({path: "./src/.env"});
+// console.log(process.env)
+
 
 //connect DB
 import db from './config/db/index.js'
 db.connect();
+
+let showHeaderAndFooter = false;
+
+app.use((req, res, next) => {
+  res.locals.showHeaderAndFooter = showHeaderAndFooter;
+  next();
+});
 
 //connect routes
 import route from './routes/index.js';

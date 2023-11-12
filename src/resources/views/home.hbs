@@ -4,10 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css" />
 </head>
 <body>
-    Home
+        <section class="banner">
+            <div class="slider_banner">
+                <a href="" target="_blank" class="slide_link">
+                    <img src="img/slide1.jpg" class="slide_img">
+                </a>
+                <a href="" target="_blank" class="slide_link hidden">
+                    <img src="img/slide2.jpg" class="slide_img">
+                </a>
+                <a href="" target="_blank" class="slide_link hidden">
+                    <img src="img/slide3.jpg" class="slide_img">
+                </a>
+            </div>
+        </section>
+        <section class="post-office-tracking">
+            <div class="container-form-tracking">
+                <div class="row">
+                    <div class="postage-tracking">
+                        <div class="form-title">
+                            <img src="img/icon-tracking.svg" alt="" style="margin-right: 0.5rem;">
+                            Theo doi buu gui
+                        </div>
+                        <form class="form-tracking" method="get" action="/find_postal_items">
+                            <input type="text" name="code-tracking" class="input-tracking" placeholder="Nhap ma buu gui">
+                            <button class="button-tracking">Theo doi</button>
+                        </form>
+                    </div>
+                    <div class="other-services">
+                        <ul class="item-service">
+                            <li>
+                                <a href="/find_post_office">
+                                    <div class="icon-service">
+                                        <img src="img/icon-fill.svg" alt="">
+                                    </div>
+                                    <div class="content-service">Tim buu cuc</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/find_costs">
+                                    <div class="icon-service">
+                                        <img src="img/icon-calculator.svg" alt="">
+                                    </div>
+                                    <div class="content-service">Uoc tinh phi</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+        <br>
+        <section class="impressive-figures">
+            <div class="container">
+                <div class="title text-uppercase text-center hidden">
+                    So lieu an tuong
+                </div>
+                <div class="row ">
+                    <div class="impressive-figures-col mt-50"> 
+                        <img src="./img/icon-giao-dich.svg" alt="">
+                        <span class="number-left count">33.000.000</span>
+                        <div class="__content-col">Giao dich tai chinh</div>
+                    </div>
+                    <div class="impressive-figures-col col-center"> 
+                        <div class="title text-uppercase">So lieu an tuong</div>
+                        <img src="./img/icon-diem-giao-dich.svg" alt="">
+                        <span class="number-left count">13.000</span>
+                        <span class="number-left">+</span>
+                        <div class="__content-col">Diem giao dich</div>
+                    </div>
+                    <div class="impressive-figures-col mt-50"> 
+                        <img src="./img/icon-box.svg" alt="">
+                        <span class="number-left count">1.851.000.000</span>
+                        <div class="__content-col">Buu gui duoc van chuyen</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="weather"> 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="weather-col1">
+                        <div class="cret-weather">
+                            <div class="text-center">
+                                <p>Thoi tiet</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="weather-col2">
+                        <p class="temp">
+                            <img src="./img/cloud-weather.svg" alt="">
+                            
+                            <span>
+                                29 °C
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
 </body>
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.slider_banner').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                adaptiveHeight: false,
+                prevArrow: '<button type="button" class="slick-prev"><</button>',
+                nextArrow: '<button type="button" class="slick-next">></button>',
+            });
+        });
+
+        function getSlidesToShow() {
+            if ($(window).width() <= 767) {
+                return 1;
+            } else if ($(window).width() <= 991) {
+                return 2;
+            } else if ($(window).width() <= 1199) {
+                return 3;
+            } else {
+                return 4;
+            }
+        }
+    </script>
 <script>
     
 
@@ -49,4 +177,6 @@
             })
         }
 </script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 </html>
+

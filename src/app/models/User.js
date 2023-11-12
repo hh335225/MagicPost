@@ -7,6 +7,7 @@ const User = new Schema({
     role: {type: String},
     email: {type: String},
     password: {type: String},
+    username: {type: String},
 })
 
 export default mongoose.model('users', User)
