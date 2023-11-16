@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+</head>
+<style>
+    .header_title {
+        margin-left: 300px;
+        margin-right: auto;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0072bc;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <nav>
+                    <ul class="main_nav">
+                        <li>
+                            <a href="/home.html" class="logo_nav">
+                                <img src="/img/logo.png" alt="">
+                            </a>
+                        </li>
+                        <li class="header_title">
+                            <span>
+                                HỆ THỐNG QUẢN LÝ ĐIỂM GIAO DỊCH
+                            </span>
+                        </li>
+                        <li class="menu_item">
+                            <a href="/login">
+                                <img src="./img/icon-login.svg" alt="">
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="back_to_top">
+        <img src="./img/icon-back-to-top.svg" alt="">
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_inner">
+            <ul class="sidebar_menu">
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo túi hàng</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tra cứu đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Danh sách đơn</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        DANH SACH TUI HANG DI
+                    </div>
+                    
+                    <div class="container_product_list">
+                        <div class="form_input_time">
+                            <div class="since_input">
+                                <div class="date-picker-container">
+                                    <label for="since_input">Từ ngày:</label>
+                                    <div class="picker_container">
+                                        <input type="text" name="since_input" class="date-picker-input" id="datepicker1">
+                                        <div class="calendar-icon" onclick="showCalendar1()">&#128197;</div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="to_input">
+                                <div class="date-picker-container">
+                                    <label for="to_input">Đến ngày:</label>
+                                    <div class="picker_container">
+                                        <input type="text" name="to_input" class="date-picker-input" id="datepicker2">
+                                        <div class="calendar-icon" onclick="showCalendar2()">&#128197;</div>
+                                    </div>               
+                                  </div>
+                            </div>
+                            <div class="btn_find_for_date">
+                                <div class="btn_tim">
+                                    <img src="/img/order-search.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav_bar_service">
+                            <input type="button" value="Xóa" name="delete">
+                            <input type="button" value="Cap nhat trang thai">
+                            <!-- <input type="button" value="ALL"> -->
+                        </div>
+                        <div class="product_list">
+                            <table id="product_list_table">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" name="all" id="check_all"></th>
+                                        <th>Ma so tui</th>
+                                        <th>Buu cuc nhan</th>
+                                        <th>Nhan vien tao don</th>
+                                        <th>Ngay tao</th>
+                                        <th>Trang thai</th>
+                                        <th>Chi tiet tui hang</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+            
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Dong Hung</span>
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Vu Trong Hieu</span>
+                                        </td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>
+                                            <div class="btn_xac_nhan_chi_tiet_tui ">
+                                                <input type="button" value="Chi tiet">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Dong Hung</span>
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Vu Trong Hieu</span>
+                                        </td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>
+                                            <div class="btn_xac_nhan_chi_tiet_tui ">
+                                                <input type="button" value="Chi tiet">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Dong Hung</span>
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Vu Trong Hieu</span>
+                                        </td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>
+                                            <div class="btn_xac_nhan_chi_tiet_tui ">
+                                                <input type="button" value="Chi tiet">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Dong Hung</span>
+                                        </td>
+                                        <td>
+                                            <span>65412f17bf22195287703a0b</span>
+                                            <span>Vu Trong Hieu</span>
+                                        </td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>
+                                            <div class="btn_xac_nhan_chi_tiet_tui ">
+                                                <input type="button" value="Chi tiet">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script>
+    var picker1 = new Pikaday({
+      field: document.getElementById('datepicker1'),
+      format: 'DD/MM/YYYY', // Định dạng ngày tháng
+      yearRange: [1900, moment().year()], // Phạm vi năm
+      showYearDropdown: true, // Hiển thị dropdown năm
+    });
+  
+    function showCalendar1() {
+      picker1.show();
+    }
+
+    var picker2 = new Pikaday({
+      field: document.getElementById('datepicker2'),
+      format: 'DD/MM/YYYY', // Định dạng ngày tháng
+      yearRange: [1900, moment().year()], // Phạm vi năm
+      showYearDropdown: true, // Hiển thị dropdown năm
+    });
+  
+    function showCalendar2() {
+      picker2.show();
+    }
+  </script>
+<script>
+    var table = document.getElementById('product_list_table');
+    var check_all = document.getElementById('check_all');
+    var check_list = document.getElementsByClassName('check_list');
+    console.log(check_list)
+
+    check_all.onchange = function() {
+        for(var i = 0; i < check_list.length; i++) {
+            check_list[i].checked = this.checked;
+        }
+    }
+
+    var check_check_all = function() {
+        for(var j = 0; j < check_list.length; j++) {
+            if(!check_list[j].checked) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    for(var i = 0; i < check_list.length; i++) {
+        check_list[i].onchange = function() {
+            if(this.checked) {
+                if(check_check_all()) {
+                    check_all.checked = true;
+                }
+            } else {
+                check_all.checked = false;
+            }
+        }
+    }
+</script>
+</html>

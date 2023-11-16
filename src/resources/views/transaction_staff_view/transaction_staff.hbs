@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+</head>
+<style>
+    .header_title {
+        margin-left: 300px;
+        margin-right: auto;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0072bc;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <nav>
+                    <ul class="main_nav">
+                        <li>
+                            <a href="/home.html" class="logo_nav">
+                                <img src="/img/logo.png" alt="">
+                            </a>
+                        </li>
+                        <li class="header_title">
+                            <span>
+                                HỆ THỐNG QUẢN LÝ ĐIỂM GIAO DỊCH
+                            </span>
+                        </li>
+                        <li class="menu_item">
+                            <a href="/login">
+                                <img src="./img/icon-login.svg" alt="">
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="back_to_top">
+        <img src="./img/icon-back-to-top.svg" alt="">
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_inner">
+            <ul class="sidebar_menu">
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo túi hàng</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tra cứu đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Danh sách đơn</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        CHẤP NHẬN BƯU GỬI LẺ
+                    </div>
+                    <div class="customer_info">
+                        <form class="sent_info">
+                            <div class="tmp">
+                            <label for="senderName">Tên Người Gửi
+                                <span style="color: red;">*</span>
+                                <span>:</span>
+                            </label>
+                            <input type="text" id="senderName" name="senderName" required>
+                            <div class="form-group">
+                                <div>
+                                    <label for="city">Tỉnh/Thành Phố:</label>
+                                    <select id="city" name="city" required>
+                                        <option value="city1">--Chọn Tỉnh/Thành phố--</option>
+                                        <option value="city2">Hà Nội</option>
+                                        <option value="city3">Thái Bình</option>
+                                    </select>
+                                </div>
+                    
+                                <div>
+                                    <label for="district">Quận/Huyện:</label>
+                                    <select id="district" name="district" required>
+                                        <option value="district1">--Chọn Quận/Huyện--</option>
+                                        <option value="district2">Đông Hưng</option>
+                                        <option value="district3">Tiền Hải</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <label for="ward">Phường/Xã:</label>
+                                    <select id="ward" name="ward" required>
+                                        <option value="ward0">--Chọn Phường/Xã--</option>
+                                        <option value="ward1">Trọng Quan</option>
+                                        <option value="ward2">Phú Châu</option>
+                                    </select>
+                                </div>
+                    
+                                <div>
+                                    <label for="postalCode">Mã Bưu Chính:</label>
+                                    <select id="postalCode" name="postalCode" required>
+                                        <option value="code0">--Chọn Mã Bưu Chính--</option>
+                                        <option value="code1">Mã Bưu Chính 1</option>
+                                        <option value="code2">Mã Bưu Chính 2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <label for="address_send">Địa chỉ chi tiết</label>
+                            <input type="text" id="address_send" name="address_send" required>
+                            <div class="form-group">
+                                <div>
+                                    <label for="phoneNumber">Số Điện Thoại:</label>
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                                </div>
+                    
+                                <div>
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                        <form class="received_info">
+                            <div class="tmp">
+                            <label for="senderName">Tên Người Nhận
+                                <span style="color: red;">*</span>
+                                <span>:</span>
+                            </label>
+                            <input type="text" id="senderName" name="senderName" required>
+                            <div class="form-group">
+                                <div>
+                                    <label for="city">Tỉnh/Thành Phố:</label>
+                                    <select id="city" name="city" required>
+                                        <option value="city1">--Chọn Tỉnh/Thành phố--</option>
+                                        <option value="city2">Hà Nội</option>
+                                        <option value="city3">Thái Bình</option>
+                                    </select>
+                                </div>
+                    
+                                <div>
+                                    <label for="district">Quận/Huyện:</label>
+                                    <select id="district" name="district" required>
+                                        <option value="district1">--Chọn Quận/Huyện--</option>
+                                        <option value="district2">Đông Hưng</option>
+                                        <option value="district3">Tiền Hải</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <label for="ward">Phường/Xã:</label>
+                                    <select id="ward" name="ward" required>
+                                        <option value="ward0">--Chọn Phường/Xã--</option>
+                                        <option value="ward1">Trọng Quan</option>
+                                        <option value="ward2">Phú Châu</option>
+                                    </select>
+                                </div>
+                    
+                                <div>
+                                    <label for="postalCode">Mã Bưu Chính:</label>
+                                    <select id="postalCode" name="postalCode" required>
+                                        <option value="code0">--Chọn Mã Bưu Chính--</option>
+                                        <option value="code1">Mã Bưu Chính 1</option>
+                                        <option value="code2">Mã Bưu Chính 2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <label for="address_received">Địa chỉ chi tiết</label>
+                            <input type="text" id="address_received" name="address_received" required>
+                            <div class="form-group">
+                                <div>
+                                    <label for="phoneNumber">Số Điện Thoại:</label>
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                                </div>
+                    
+                                <div>
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="container_info_product">
+                        <div class="form-section">
+                            <div class="inline-inputs">
+                                <div>
+                                    <label for="packageType">Loại Hàng: </label>
+                                    <select id="packageType" name="packageType">
+                                        <option value="type0">--Loại hàng gửi--</option>
+                                        <option value="type1">Tài liệu</option>
+                                        <option value="type2">Hàng hóa</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="weight">Khối Lượng(kg): </label>
+                                    <input type="text" name="weight" id="weight" style="width: 90%;" placeholder="0 kg">
+                                </div>
+                                
+                                
+                                <div>
+                                    <label for="note">Chỉ dẫn khi gửi thất bại: </label>
+                                    <select id="note" name="note">
+                                        <option value="note0">--Chọn chỉ dẫn--</option>
+                                        <option value="note1">Chuyển hoàn ngay</option>
+                                        <option value="note2">Gọi điện cho người gửi</option>
+                                        <option value="note3">Chuyển hoàn trước ngày</option>
+                                        <option value="note4">Chuyển hoàn khi hết thời gian lưu trữ</option>
+                                        <option value="note5">Hủy</option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                            <div>
+                                <label for="businessValue">Chú Dẫn Nghiệp Vụ</label>
+                                <textarea id="businessValue" name="businessValue" style="width: 100%; height: 80px;"></textarea>
+                            </div>
+                            <div>
+                                <label for="additionalService">Dịch Vụ Thêm</label>
+                                <textarea type="text" id="additionalService" name="additionalService" style="width: 100%; height: 80px;"></textarea>
+                            </div>
+                            
+                        </div>
+                
+                        <div class="table-section">
+                            <div>
+                                <span style=" font-size: 18px; font-weight: 400;">
+                                    Nội dung trị giá bưu gửi:
+                                </span>
+                            </div>
+                            <table id="parcelTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nội Dung</th>
+                                        <th>Số Lượng</th>
+                                        <th>Trị Giá</th>
+                                        <th>Giấy Tờ Đi Kèm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" name="content[]" oninput="updateTotal()"></td>
+                                        <td><input type="number" name="quantity[]" oninput="updateTotal()"></td>
+                                        <td><input type="number" name="value[]" oninput="updateTotal()"></td>
+                                        <td><input type="text" name="documents[]" oninput="updateTotal()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="SUM" value="Tổng" style="text-align: center; font-size: 14px; font-weight: 400;" readonly></td>
+                                        <td><input type="number" name="quantity[]" readonly></td>
+                                        <td><input type="number" name="value[]" readonly></td>
+                                        <td><input type="text" name="documents[]" readonly></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span class="add-row-btn" onclick="addRow()">+Thêm Hàng</span>
+                
+                            <div class="total-section">
+                                <div>
+                                    <label for="estimatedFee">Cước chính:</label>
+                                    <input type="number" id="estimatedFee" name="estimatedFee" oninput="updateTotal_()">
+                                </div>
+                                <div>
+                                    <label for="additionalFee">Phụ phí:</label>
+                                    <input type="number" id="additionalFee" name="additionalFee" oninput="updateTotal_()">
+                                </div>
+                
+                                <div>
+                                    <label for="cashOnDelivery">Thu hộ:</label>
+                                    <input type="number" id="cashOnDelivery" name="cashOnDelivery">
+                                </div>
+                            </div>
+                
+                            <div class="total-price">
+                                <label for="total">Tổng thu:</label>
+                                <input type="text" id="total" name="total" readonly style="width: 50%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit_info">
+                        <div class="btn_submit_info">
+                            <input type="button" value="TẠO ĐƠN">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script>
+    function addRow() {
+            var table = document.getElementById("parcelTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length - 1);
+            
+            // Thêm các ô input cho dòng mới
+            for (var i = 0; i < 4; i++) {
+                var cell = newRow.insertCell(i);
+                var input = document.createElement('input');
+                input.type = (i === 0 || i===3) ? 'text' : 'number';
+                input.name = (i === 0) ? 'content[]' : (i === 1) ? 'quantity[]' : (i === 2) ? 'value[]' : 'documents[]';
+                input.setAttribute('oninput', 'updateTotal()');
+                cell.appendChild(input);
+            }
+
+            // Cập nhật tổng giá trị
+            updateTotal();
+        }
+
+        function updateTotal() {
+            var table = document.getElementById("parcelTable").getElementsByTagName('tbody')[0];
+            var totalQuantity = 0;
+            var totalValue = 0;
+            
+
+        
+            for (var i = 0; i < table.rows.length - 1; i++) {
+                var quantity = parseInt(table.rows[i].cells[1].getElementsByTagName('input')[0].value) || 0;
+                var value = parseInt(table.rows[i].cells[2].getElementsByTagName('input')[0].value) || 0;
+
+                totalQuantity += quantity;
+                totalValue += value*quantity;
+            }
+
+            // Cập nhật giá trị cho hàng tổng
+            table.rows[table.rows.length - 1].cells[1].getElementsByTagName('input')[0].value = totalQuantity;
+            table.rows[table.rows.length - 1].cells[2].getElementsByTagName('input')[0].value = totalValue;
+            
+        }
+
+        function updateTotal_() {
+            var estimatedFee = parseFloat(document.getElementById("estimatedFee").value) || 0;
+            var additionalFee = parseFloat(document.getElementById("additionalFee").value) || 0;
+            var cashOnDelivery = parseFloat(document.getElementById("cashOnDelivery").value) || 0;
+
+            var total = estimatedFee + additionalFee + cashOnDelivery;
+
+            document.getElementById("total").value = total.toFixed(2); // Giữ 2 chữ số thập phân
+        }
+</script>
+</html>

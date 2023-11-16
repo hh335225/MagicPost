@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+    <!-- <link rel="stylesheet" href="find.css"> -->
+</head>
+<style>
+    .header_title {
+        margin-left: 300px;
+        margin-right: auto;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0072bc;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <nav>
+                    <ul class="main_nav">
+                        <li>
+                            <a href="/home.html" class="logo_nav">
+                                <img src="/img/logo.png" alt="">
+                            </a>
+                        </li>
+                        <li class="header_title">
+                            <span>
+                                HỆ THỐNG QUẢN LÝ ĐIỂM GIAO DỊCH
+                            </span>
+                        </li>
+                        <li class="menu_item">
+                            <a href="/login">
+                                <img src="./img/icon-login.svg" alt="">
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="back_to_top">
+        <img src="./img/icon-back-to-top.svg" alt="">
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_inner">
+            <ul class="sidebar_menu">
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo túi hàng</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tra cứu đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Danh sách đơn</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        TRA CUU DON HANG
+                    </div>
+                    <div class="tra_cuu_don_hang_staff">
+                        <section class="find-items-content">
+                            <div class="search-code-items">
+                                <div class="search-items-text">
+                                    <img src="./img/order-search.png" alt="">
+                                    <div>Ma buu gui (VD: dveviennvevoebo)</div>
+                                </div>
+                                <div class="search-items-input">
+                                    <form action="">
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <input type="text" name="code-tracking" placeholder="Nhap ma buu gui" >
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button class="btn-find_item">Tra cuu</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <i style="color: red;">*Khong tim thay don hang!!!</i>
+                            </div>
+                            <div class="order-search-info">
+                                <div class="order-search-info-title">
+                                    <h3>THONG TIN BUU GUI</h3>
+                                </div>
+                                <div class="order-search-info-top row">
+                                    <div class="order-search-info-top-text col-lg-2 col-sm-3 col-6">
+                                        <div>So hieu buu gui</div>
+                                        <p>EB1259666699989VN</p>
+                                    </div>
+                                    <div class="order-search-info-top-text col-lg-2 col-sm-3 col-6">
+                                        <div>Khoi luong (gram)</div>
+                                        <p>89</p>
+                                    </div>
+                                    <div class="order-search-info-top-text col-lg-4 col-sm-3 col-6">
+                                        <div>Noi gui</div>
+                                        <p>Buu cuc Thai Binh</p>
+                                    </div>
+                                    <div class="order-search-info-top-text col-lg-4 col-sm-3 col-6">
+                                        <div>Noi nhan</div>
+                                        <p>Buu cuc Dong Da</p>
+                                    </div>
+                                </div>
+                                <div class="order-search-info-middle row">
+                                    <div class="col-lg-4-1 col-sm-6 col-12">
+                                        <div>
+                                            Tinh gui:
+                                            <span>Thai Binh</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-sm-6 col-12">
+                                        <div>
+                                            Dia chi gui:
+                                            <span>Dong Hung</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-search-info-middle row">
+                                    <div class="col-lg-4-1 col-sm-6 col-12">
+                                        <div>
+                                            Tinh Nhan:
+                                            <span>Ha Noi</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-sm-6 col-12">
+                                        <div>
+                                            Dia chi nhan:
+                                            <span>Dong Da</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-search-info-bottom row">
+                                    <div class="col-12">
+                                        <div>
+                                            Trang thai:
+                                            <span>Phat Thanh Cong</span>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                            </div>
+                            <div class="order-search-info-status">
+                                <div class="order-search-info-status-title">
+                                    <h3>THONG TIN TRANG THAI</h3>
+                                </div>
+                                <div class="order-search-info-status-content">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Ngay</th>
+                                                    <th>Gio</th>
+                                                    <th>Trang thai</th>
+                                                    <th>Vi tri</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>19/11/2023</td>
+                                                    <td>17:50:05</td>
+                                                    <td>Chap nhan gui(116868:Buu cuc Dong DA)</td>
+                                                    <td>88, Kim Hoa, Dong Da, Ha Noi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>19/11/2023</td>
+                                                    <td>21:50:05</td>
+                                                    <td>Roi khoi buu cuc</td>
+                                                    <td>88, Kim Hoa, Dong Da, Ha Noi</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>19/11/2023</td>
+                                                    <td>23:50:05</td>
+                                                    <td>Van chuyen den buu cuc(123232:Buu cuc Dong Hung)</td>
+                                                    <td>TT Dong Hung, Dong Hung, Thai Binh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        </section>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

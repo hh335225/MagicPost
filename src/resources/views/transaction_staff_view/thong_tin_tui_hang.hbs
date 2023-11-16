@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+</head>
+<style>
+    .header_title {
+        margin-left: 300px;
+        margin-right: auto;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0072bc;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <nav>
+                    <ul class="main_nav">
+                        <li>
+                            <a href="/home.html" class="logo_nav">
+                                <img src="/img/logo.png" alt="">
+                            </a>
+                        </li>
+                        <li class="header_title">
+                            <span>
+                                HỆ THỐNG QUẢN LÝ ĐIỂM GIAO DỊCH
+                            </span>
+                        </li>
+                        <li class="menu_item">
+                            <a href="/login">
+                                <img src="./img/icon-login.svg" alt="">
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="back_to_top">
+        <img src="./img/icon-back-to-top.svg" alt="">
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_inner">
+            <ul class="sidebar_menu">
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo túi hàng</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tra cứu đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Danh sách đơn</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        THONG TIN TUI HANG
+                    </div>
+                    
+                    <div class="container_product_list">
+                        <div class="main_content_xac_nhan">
+                            <div class="ma_tui_hang">
+                                <label for="ma_tui_hang">Mã túi hàng: </label>
+                                <input type="text" name="ma_tui_hang" id="ma_tui_hang" value="con chim xanh xanh" readonly>
+                            </div>
+                            <div class="thong_tin_buu_cuc_gui_nhan">
+                                <div class="ma_buu_cuc">
+                                    <label for="buu_cuc_gui">Bưu cục gửi: </label>
+                                    <input type="text" name="buu_cuc_gui" id="buu_cuc_gui" value="" readonly>
+                                </div>
+                                <div class="ma_buu_cuc">
+                                    <label for="buu_cuc_nhan">Bưu cục nhận: </label>
+                                    <input type="text" name="buu_cuc_nhan" id="buu_cuc_nhan" value="" readonly>
+                                </div>
+                            </div>
+                            <div class="ngay_gui_tui">
+                                <span>Ngày gửi: </span>
+                                <span id="Ngay_gui_tui">16/11/2023</span>
+                            </div>
+                            <div class="product_list">
+                                <table id="product_list_table">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th><input type="checkbox" name="all" id="check_all"></th> -->
+                                            <!-- <th>Buu cuc giao dich</th> -->
+                                            <th>Ma don hang</th>
+                                            <th>Ten khach hang</th>
+                                            <th>Ngay tao</th>
+                                            <th>Trang thai</th>
+                                            <th>Chuyen don</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                            <!-- <td>65412f17bf22195287703a0b-Dong Hung</td> -->
+                                            <td>65412f17bf22195287703a0b</td>
+                                            <td>VU Trong Hieu</td>
+                                            <td>
+                                                <span>11/11/2023</span>
+                                                <span>15:23:00</span>
+                                            </td>
+                                            <td>
+                                                <span>Da nhan</span>
+                                            </td>
+                                            <td>Gui di</td>
+                                        </tr>
+                                        <tr>
+                                            <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                            <!-- <td>65412f17bf22195287703a0b-Dong Hung</td> -->
+                                            <td>65412f17bf22195287703a0b</td>
+                                            <td>VU Trong Hieu</td>
+                                            <td>
+                                                <span>11/11/2023</span>
+                                                <span>15:23:00</span>
+                                            </td>
+                                            <td>
+                                                <span>Da nhan</span>
+                                            </td>
+                                            <!-- <td>
+                                                <div class="xac_nhan_item">
+                                                    <input type="button" class="item_da_nhan" value="Đã nhận">
+                                                </div>
+                                                <div class="xac_nhan_item">
+                                                    <input type="button" class="item_chua_nhan" value="Chưa nhận">
+                                                </div>
+                                            </td> -->
+                                            <td>Gui di</td>
+                                        </tr>
+                                        <tr>
+                                            <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                            <!-- <td>65412f17bf22195287703a0b-Dong Hung</td> -->
+                                            <td>65412f17bf22195287703a0b</td>
+                                            <td>VU Trong Hieu</td>
+                                            <td>
+                                                <span>11/11/2023</span>
+                                                <span>15:23:00</span>
+                                            </td>
+                                            <td>
+                                                <span>Da gui</span>
+                                            </td>
+                                            <!-- <td>
+                                                <div class="xac_nhan_item">
+                                                    <input type="button" class="item_da_nhan" value="Đã nhận">
+                                                </div>
+                                                <div class="xac_nhan_item">
+                                                    <input type="button" class="item_chua_nhan" value="Chưa nhận">
+                                                </div>
+                                            </td> -->
+                                            <td>Hang hoan</td>
+                                        </tr>
+                                        <tr>
+                                            <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                            <!-- <td>65412f17bf22195287703a0b-Dong Hung</td> -->
+                                            <td>65412f17bf22195287703a0b</td>
+                                            <td>VU Trong Hieu</td>
+                                            <td>
+                                                <span>11/11/2023</span>
+                                                <span>15:23:00</span>
+                                            </td>
+                                            <td>
+                                                <span>That lac</span>
+                                            </td>
+                                            <!-- <td>
+                                                <div class="xac_nhan_item">
+                                                    <input type="button" class="item_da_nhan" value="Đã nhận">
+                                                </div>
+                                                <div class="xac_nhan_item">
+                                                    <input type="button" class="item_chua_nhan" value="Chưa nhận">
+                                                </div>
+                                            </td> -->
+                                            <td>Hang hoan</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+
+</html>

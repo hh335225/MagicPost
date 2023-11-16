@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/hoadon.css">
+</head>
+<body>
+    <div class="hoadon_container">
+        <div class="logo_qr_container">
+            <div class="logo_hoadon">
+                <img src="/img/logo.png" alt="">
+            </div>
+            <div class="qr_hoadon">
+                <img src="/img/logo.png" alt="">
+                <div class="code_hoadon">
+                    <h3>EB413591418VN</h3>
+                </div>
+            </div>
+        </div>
+        <div class="hoadon_content">
+            <div class="hoadon_left">
+                <div class="info_customer">
+                    <div class="name_customer">
+                        <h3>1. Ho ten dia chi nguoi gui</h1>
+                        <span>Vu Trong Hieu</span>
+                        <br>
+                        <span>88 Kim Hoa, Dong Da , Ha Noi</span>
+                    </div>
+                    <div class="other_info">
+                        <div class="phone_cus type_flex">
+                            <h3>Dien thoai:</h3>
+                            <span>0369898270</span>
+                        </div>
+                        <div class="postal_code type_flex">
+                            <h3>Ma buu chinh:</h3>
+                            <span>06806</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info_parcel">
+                    <div class="info_sectors">
+                        <h3>3. Loai hang gui:</h3>
+                        <div class="sectors_checkbox">
+                            <div class="box_tailieu">
+                                <input type="checkbox" name="tai_lieu" id="tai_lieu" checked disabled>
+                                <label for="tai_lieu">Tai Lieu</label>
+                            </div>
+                            <div class="box_hanghoa">
+                                <input type="checkbox" name="hang_hoa" id="hang_hoa" disabled>
+                                <label for="hang_hoa">Hang Hoa</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_table">
+                        <h3>4. Noi dung tri gia buu gui:</h3>
+                        <div class="table_content">
+                            <table id="parcelTable">
+                                <thead>
+                                    <tr>
+                                        <th>Noi dung</th>
+                                        <th>So luong</th>
+                                        <th>Tri gia</th>
+                                        <th>Giay to di kem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dong ho</td>
+                                        <td>1</td>
+                                        <td>1000000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dong ho</td>
+                                        <td>1</td>
+                                        <td>1000000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dong ho</td>
+                                        <td>1</td>
+                                        <td>1000000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 16px; font-weight: 600;">Tong</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="other_service">
+                        <h3>5. Dich vu dac biet/Cong them:</h3>
+                        <p style="height: 50px; word-wrap: break-word;" class="other_service_content"></p>
+                    </div>
+                    <div class="sender_instructions">
+                        <h3>6. Chi dan cua nguoi gui khi khong phat duoc buu gui:</h3>
+                        <div class="box_checkbox">
+                            <div class="instructions_box">
+                                <input type="checkbox" name="chuyen_hoan_ngay" id="chuyen_hoan_ngay" checked disabled>
+                                <label for="chuyen_hoan_ngay">Chuyển hoàn ngay</label> 
+                            </div>
+                            <div class="instructions_box">
+                                <input type="checkbox" name="goi_dien" id="goi_dien" disabled>
+                                <label for="goi_dien">Gọi điện cho người gửi/BC gửi</label> 
+                            </div>
+                            <div class="instructions_box">
+                                <input type="checkbox" name="huy" id="huy" disabled>
+                                <label for="huy">Hủy</label> 
+                            </div>
+                        </div>
+                        <div class="box_checkbox">
+                            <div class="instructions_box">
+                                <input type="checkbox" name="chuyen_hoan_truoc_ngay" id="chuyen_hoan_truoc_ngay" disabled>
+                                <label for="chuyen_hoan_ngay">Chuyển hoàn trước ngày</label> 
+                            </div>
+                            <div class="instructions_box">
+                                <input type="checkbox" name="chuyen_hoan_khi_het_tg" id="chuyen_hoan_khi_het_tg" disabled>
+                                <label for="chuyen_hoan_khi_het_tg">Chuyển hoàn khi hết thời gian lưu trữ</label> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="commitment">
+                        <div class="user_commit">
+                            <h3>7. Cam kết của người gửi:</h3>
+                            <span>Tôi chấp nhận các điều khoản tại mặt sau của phiếu gửi
+                                và cam đoan bưu gửi này không chứa những mặt hàng nguy hiểm, cấm gửi.
+                                Trường hợp không phát được, hãy thực hiện chỉ dẫn ở mục 6, tôi sẽ trả cước chuyển hoàn.
+                            </span>
+                        </div>
+                        <div class="time_signature">
+                            <div class="time">
+                                <h3>8. Ngày giờ gửi:</h3>
+                                <span>10h21/08/11/2023</span>
+                            </div>
+                            <div class="signature">
+                                <h3>Chữ ký người gửi</h3>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hoadon_right">
+                <div class="info_customer">
+                    <div class="name_customer">
+                        <h3>2. Ho ten dia chi nguoi nhan</h1>
+                        <span>Do Huy Hoang</span>
+                        <br>
+                        <span>127 Hao Nam, Dong Da , Ha Noi</span>
+                    </div>
+                    <div class="other_info">
+                        <div class="phone_cus type_flex">
+                            <h3>Dien thoai:</h3>
+                            <span>0369898270</span>
+                        </div>
+                        <div class="postal_code type_flex">
+                            <h3>Ma buu chinh:</h3>
+                            <span>06807</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info_costs_weight">
+                    <div class="costs">
+                        <div class="cost">
+                            <h3>9. Cước:</h3>
+                            <div class="cost_item">
+                                <span>a.Cước chính:</span>
+                                <span>41.000</span>
+                            </div>
+                            <div class="cost_item">
+                                <span>b.Phụ phí:</span>
+                                <span>0</span>
+                            </div>
+                            <div class="cost_item">
+                                <span>c.Tổng thu(bao gồm VAT):</span>
+                                <span>41.000</span>
+                            </div>
+                        </div>
+                        <div class="COD">
+                            <h3>11. Thu của người nhận:</h3>
+                            <div class="cost_item">
+                                <span>COD:</span>
+                                <span>410.000</span>
+                            </div>  
+                            <div class="cost_item">
+                                <span>Thu khác:</span>
+                                <span>0</span>
+                            </div>
+                            <div class="cost_item">
+                                <span>Tổng thu:</span>
+                                <span>410.000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weight_">
+                        <div class="weight">
+                            <h3>10. Khối lượng(kg):</h3>
+                            <div class="cost_item">
+                                <span>Khối lượng thực tế:</span>
+                                <span>480</span>
+                            </div>
+                            <div class="cost_item">
+                                <span>Khối lượng quy đổi:</span>
+                                <span>0</span>
+                            </div>
+                        </div>
+                        <div class="note_weight" style="height: 158px;">
+                            <h3>12. Chú dẫn nghiệp vụ:</h3>
+                            <span ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stamped">
+                    <div class="postal_stamped">
+                        <h3 style="margin-left: 45px;">13. Bưu cục chấp nhận</h3>
+                        <span style="margin-left: 85px;">Chữ ký GDV nhận</span>
+                    </div>
+                    <div class="time_stamped">
+                        <h3 style="margin-left:12px;">14. Ngày giờ nhận:</h3>
+                        <span>__h__/__/__/20__</span>
+                        <br>
+                        <span>Người nhận/Người được ủy quyền nhận</span>
+                        <br>
+                        <span>(Ký, ghi rõ họ tên)</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="submit_hoadon">
+        <div class="btn_submit_hoadon">
+            <input type="button" value="TẠO ĐƠN">
+        </div>
+    </div>
+</body>
+</html>

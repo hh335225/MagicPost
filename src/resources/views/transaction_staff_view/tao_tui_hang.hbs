@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+</head>
+<style>
+    .header_title {
+        margin-left: 300px;
+        margin-right: auto;
+        font-size: 20px;
+        font-weight: 700;
+        color: #0072bc;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <nav>
+                    <ul class="main_nav">
+                        <li>
+                            <a href="/home.html" class="logo_nav">
+                                <img src="/img/logo.png" alt="">
+                            </a>
+                        </li>
+                        <li class="header_title">
+                            <span>
+                                HỆ THỐNG QUẢN LÝ ĐIỂM GIAO DỊCH
+                            </span>
+                        </li>
+                        <li class="menu_item">
+                            <a href="/login">
+                                <img src="./img/icon-login.svg" alt="">
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="back_to_top">
+        <img src="./img/icon-back-to-top.svg" alt="">
+    </div>
+    <div class="sidebar">
+        <div class="sidebar_inner">
+            <ul class="sidebar_menu">
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tạo túi hàng</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Tra cứu đơn</span>
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="" class="sidebar_link">
+                        <span class="icon_holder">
+                            <img src="./img/icon-login.svg" alt="">
+                        </span>
+                        <span class="title">Danh sách đơn</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        TAO TUI HANG
+                    </div>
+                    <div class="customer_info">
+                        <form class="sent_info">
+                            <div class="tmp">
+                                
+                                <div class="form-group">
+                                    <div>
+                                        <label for="city">Tỉnh/Thành Phố:</label>
+                                        <select id="city" name="city" required>
+                                            <option value="city1">--Chọn Tỉnh/Thành phố--</option>
+                                            <option value="city2">Hà Nội</option>
+                                            <option value="city3">Thái Bình</option>
+                                        </select>
+                                    </div>
+                        
+                                    <div>
+                                        <label for="district">Quận/Huyện:</label>
+                                        <select id="district" name="district" required>
+                                            <option value="district1">--Chọn Quận/Huyện--</option>
+                                            <option value="district2">Đông Hưng</option>
+                                            <option value="district3">Tiền Hải</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label for="ward">Phường/Xã:</label>
+                                        <select id="ward" name="ward" required>
+                                            <option value="ward0">--Chọn Phường/Xã--</option>
+                                            <option value="ward1">Trọng Quan</option>
+                                            <option value="ward2">Phú Châu</option>
+                                        </select>
+                                    </div>
+                        
+                                    <div>
+                                        <label for="postalCode">Mã Bưu Chính:</label>
+                                        <select id="postalCode" name="postalCode" required>
+                                            <option value="code0">--Chọn Mã Bưu Chính--</option>
+                                            <option value="code1">Mã Bưu Chính 1</option>
+                                            <option value="code2">Mã Bưu Chính 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="container_product_list">
+                        <div class="product_list">
+                            <table id="product_list_table">
+                                <thead>
+                                    <tr>
+                                        <!-- <th><input type="checkbox" name="all" id="check_all"></th> -->
+                                        <th>Buu cuc giao dich</th>
+                                        <th>Ma don hang</th>
+                                        <th>Ten khach hang</th>
+                                        <th>Ngay tao</th>
+                                        <th>Trang thai</th>
+                                        <th>Chuyen don</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
+                                        <td>65412f17bf22195287703a0b</td>
+                                        <td>VU Trong Hieu</td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>Gui di</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
+                                        <td>65412f17bf22195287703a0b</td>
+                                        <td>VU Trong Hieu</td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>Gui di</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
+                                        <td>65412f17bf22195287703a0b</td>
+                                        <td>VU Trong Hieu</td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>Hang hoan</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
+                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
+                                        <td>65412f17bf22195287703a0b</td>
+                                        <td>VU Trong Hieu</td>
+                                        <td>
+                                            <span>11/11/2023</span>
+                                            <span>15:23:00</span>
+                                        </td>
+                                        <td>Dang xu ly</td>
+                                        <td>Hang hoan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="submit_tao_tui_hang">
+                        <div class="btn_tao_tui_hang">
+                            <input type="button" value="Xac nhan tao tui hang">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
