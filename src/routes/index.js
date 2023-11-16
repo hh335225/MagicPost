@@ -9,6 +9,6 @@ import { checkHeaderFooter } from '../app/middleware/checkHeader.js' // muốn t
 export default function route(app) {
     app.use('/transaction_staff',authentication.checkTransactionStaff, transaction_staffRoutes)
     app.use('/manager', authentication.checkManager,managerRoutes)
-    app.use('/login',[checkHeaderFooter],loginRoutes)
-    app.use('/' , [checkHeaderFooter], homeRoutes);
+    app.use('/login',loginRoutes)
+    app.use('/', homeRoutes);
 }

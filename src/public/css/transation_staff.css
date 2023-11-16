@@ -1,3 +1,10 @@
+.header_title {
+  margin-left: 300px;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0072bc; }
+
 .sidebar {
   background-color: #fff;
   bottom: 0px;

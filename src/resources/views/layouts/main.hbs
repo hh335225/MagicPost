@@ -11,7 +11,9 @@
 <script src='/js/Cookies.js'></script>
 <body>
 
-    {{#if showHeaderAndFooter}}
+    {{#if transaction_staff_header}}
+        {{> transaction_staff_header/header}}
+    {{else}}
         {{> header}}
     {{/if}}
 
