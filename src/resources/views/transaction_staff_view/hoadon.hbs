@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {{!-- <link rel="stylesheet" href="/css/transation_staff.css"> --}}
     <link rel="stylesheet" href="/css/hoadon.css">
+    
 </head>
 <body>
     <div class="hoadon_container">
@@ -15,7 +17,7 @@
             <div class="qr_hoadon">
                 <img src="/img/logo.png" alt="">
                 <div class="code_hoadon">
-                    <h3>EB413591418VN</h3>
+                    <h3>{{parcel._id}}</h3>
                 </div>
             </div>
         </div>
@@ -23,71 +25,67 @@
             <div class="hoadon_left">
                 <div class="info_customer">
                     <div class="name_customer">
-                        <h3>1. Ho ten dia chi nguoi gui</h1>
-                        <span>Vu Trong Hieu</span>
+                        <h3>1. Họ tên địa chỉ người gửi</h1>
+                        <span>{{parcel.send_name}}</span>
                         <br>
-                        <span>88 Kim Hoa, Dong Da , Ha Noi</span>
+                        <span>{{parcel.send_address}}</span>
                     </div>
                     <div class="other_info">
                         <div class="phone_cus type_flex">
-                            <h3>Dien thoai:</h3>
-                            <span>0369898270</span>
+                            <h3>Điện thoại:</h3>
+                            <span>{{parcel.send_phone_number}}</span>
                         </div>
                         <div class="postal_code type_flex">
-                            <h3>Ma buu chinh:</h3>
-                            <span>06806</span>
+                            <h3>Mã bưu chính:</h3>
+                            <span>{{parcel.send_postal_code}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="info_parcel">
                     <div class="info_sectors">
-                        <h3>3. Loai hang gui:</h3>
-                        <div class="sectors_checkbox">
+                        <h3>3. Loại hàng gửi:</h3>
+                        <div class="sectors_checkbox" id="loai_hang">
                             <div class="box_tailieu">
                                 <input type="checkbox" name="tai_lieu" id="tai_lieu" checked disabled>
-                                <label for="tai_lieu">Tai Lieu</label>
+                                <label for="tai_lieu">Tài Liệu</label>
                             </div>
                             <div class="box_hanghoa">
                                 <input type="checkbox" name="hang_hoa" id="hang_hoa" disabled>
-                                <label for="hang_hoa">Hang Hoa</label>
+                                <label for="hang_hoa">Hàng Hóa</label>
                             </div>
                         </div>
                     </div>
                     <div class="info_table">
-                        <h3>4. Noi dung tri gia buu gui:</h3>
+                        <h3>4. Nội dung trị giá bưu gửi:</h3>
                         <div class="table_content">
                             <table id="parcelTable">
                                 <thead>
                                     <tr>
-                                        <th>Noi dung</th>
-                                        <th>So luong</th>
-                                        <th>Tri gia</th>
-                                        <th>Giay to di kem</th>
+                                        <th>Nội dung</th>
+                                        <th>Số lượng</th>
+                                        <th>Trị giá</th>
+                                        <th>Giấy tờ đi kèm</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{!-- <tr>
                                         <td>Dong ho</td>
                                         <td>1</td>
                                         <td>1000000</td>
                                         <td></td>
+                                    </tr>    --}}
+                                    {{#each parcel.list_item}}
+                                    <tr class="parcel_item">
+                                        <td>{{this.name}}</td>
+                                        <td>{{this.so_luong}}</td>
+                                        <td>{{this.tri_gia}}</td>
+                                        <td>{{this.giay_to}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Dong ho</td>
-                                        <td>1</td>
-                                        <td>1000000</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dong ho</td>
-                                        <td>1</td>
-                                        <td>1000000</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="font-size: 16px; font-weight: 600;">Tong</td>
-                                        <td></td>
-                                        <td></td>
+                                    {{/each}}                               
+                                    <tr id="sum_item">
+                                        <td style="font-size: 16px; font-weight: 600;">Tổng</td>
+                                        <td>0</td>
+                                        <td>0</td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -95,11 +93,11 @@
                         </div>
                     </div>
                     <div class="other_service">
-                        <h3>5. Dich vu dac biet/Cong them:</h3>
-                        <p style="height: 50px; word-wrap: break-word;" class="other_service_content"></p>
+                        <h3>5. Dịch vụ đặc biệt/Cộng thêm:</h3>
+                        <p style="height: 50px; word-wrap: break-word;" class="other_service_content">{{parcel.dich_vu}}</p>
                     </div>
-                    <div class="sender_instructions">
-                        <h3>6. Chi dan cua nguoi gui khi khong phat duoc buu gui:</h3>
+                    <div class="sender_instructions" id="chi_dan_gui">
+                        <h3>6. Chỉ dẫn của người gửi khi không phát được bưu gửi:</h3>
                         <div class="box_checkbox">
                             <div class="instructions_box">
                                 <input type="checkbox" name="chuyen_hoan_ngay" id="chuyen_hoan_ngay" checked disabled>
@@ -136,7 +134,7 @@
                         <div class="time_signature">
                             <div class="time">
                                 <h3>8. Ngày giờ gửi:</h3>
-                                <span>10h21/08/11/2023</span>
+                                <span>{{parcel.thoi_gian}}</span>
                             </div>
                             <div class="signature">
                                 <h3>Chữ ký người gửi</h3>
@@ -149,19 +147,19 @@
             <div class="hoadon_right">
                 <div class="info_customer">
                     <div class="name_customer">
-                        <h3>2. Ho ten dia chi nguoi nhan</h1>
-                        <span>Do Huy Hoang</span>
+                        <h3>2. Họ tên địa chỉ người nhận</h1>
+                        <span>{{parcel.recipient_name}}</span>
                         <br>
-                        <span>127 Hao Nam, Dong Da , Ha Noi</span>
+                        <span>{{parcel.recipient_address}}</span>
                     </div>
                     <div class="other_info">
                         <div class="phone_cus type_flex">
-                            <h3>Dien thoai:</h3>
-                            <span>0369898270</span>
+                            <h3>Điện thoại:</h3>
+                            <span>{{parcel.recipient_phone_number}}</span>
                         </div>
                         <div class="postal_code type_flex">
-                            <h3>Ma buu chinh:</h3>
-                            <span>06807</span>
+                            <h3>Mã bưu chính:</h3>
+                            <span>{{parcel.recipient_postal_code}}</span>
                         </div>
                     </div>
                 </div>
@@ -171,22 +169,28 @@
                             <h3>9. Cước:</h3>
                             <div class="cost_item">
                                 <span>a.Cước chính:</span>
-                                <span>41.000</span>
+                                <span>{{parcel.cuoc_chinh}}</span>
                             </div>
                             <div class="cost_item">
                                 <span>b.Phụ phí:</span>
-                                <span>0</span>
+                                <span>{{parcel.phu_thu}}</span>
                             </div>
                             <div class="cost_item">
                                 <span>c.Tổng thu(bao gồm VAT):</span>
-                                <span>41.000</span>
+                                <span>{{sum parcel.cuoc_chinh parcel.phu_thu}}</span>
                             </div>
                         </div>
                         <div class="COD">
                             <h3>11. Thu của người nhận:</h3>
                             <div class="cost_item">
                                 <span>COD:</span>
-                                <span>410.000</span>
+                                {{!-- <span>{{parcel.thu_ho}}</span> --}}
+                                <span>{{#if parcel.thu_ho}}
+                                            {{parcel.thu_ho}}
+                                      {{else}}
+                                            0
+                                      {{/if}}
+                                </span>
                             </div>  
                             <div class="cost_item">
                                 <span>Thu khác:</span>
@@ -194,7 +198,12 @@
                             </div>
                             <div class="cost_item">
                                 <span>Tổng thu:</span>
-                                <span>410.000</span>
+                                <span>{{#if parcel.thu_ho}}
+                                            {{parcel.thu_ho}}
+                                      {{else}}
+                                            0
+                                      {{/if}}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -203,16 +212,26 @@
                             <h3>10. Khối lượng(kg):</h3>
                             <div class="cost_item">
                                 <span>Khối lượng thực tế:</span>
-                                <span>480</span>
+                                <span>{{#if parcel.weight}}
+                                            {{parcel.weight}}
+                                      {{else}}
+                                            0
+                                      {{/if}}
+                                </span>
                             </div>
                             <div class="cost_item">
                                 <span>Khối lượng quy đổi:</span>
-                                <span>0</span>
+                                <span>{{#if parcel.weight}}
+                                            {{parcel.weight}}
+                                      {{else}}
+                                            0
+                                      {{/if}}
+                                </span>
                             </div>
                         </div>
                         <div class="note_weight" style="height: 158px;">
                             <h3>12. Chú dẫn nghiệp vụ:</h3>
-                            <span ></span>
+                            <span>{{parcel.chu_dan_nv}}</span>
                         </div>
                     </div>
                 </div>
@@ -240,4 +259,39 @@
         </div>
     </div>
 </body>
+<script>
+    document.getElementsByClassName('btn_submit_hoadon')[0].addEventListener("click", function(event) {
+        window.location.href = '/transaction_staff';
+    })
+</script>
+<script>
+    var sum = document.getElementById('sum_item');
+    var list_item = document.getElementsByClassName('parcel_item');
+    list_item = Array.from(list_item);
+    if(list_item.length > 0) {
+        list_item.forEach(item => {
+            sum.getElementsByTagName('td')[1].innerText = parseInt(sum.getElementsByTagName('td')[1].innerText) + parseInt(item.getElementsByTagName('td')[1].innerText);
+            sum.getElementsByTagName('td')[2].innerText = parseInt(sum.getElementsByTagName('td')[2].innerText) + parseInt(item.getElementsByTagName('td')[2].innerText)*parseInt(item.getElementsByTagName('td')[1].innerText);
+        })
+    }
+
+    var loai_hang = document.getElementById("loai_hang").getElementsByTagName("input");
+    for(var i = 0; i < loai_hang.length; i++) {
+        if(i == {{parcel.loai_hang}}) { 
+            loai_hang[i].setAttribute("checked", "checked");
+        }else {
+            loai_hang[i].removeAttribute("checked");
+        }
+
+    }
+
+    var chi_dan_gui = document.getElementById("chi_dan_gui").getElementsByTagName("input");
+    for(var i = 0; i < chi_dan_gui.length; i++) {
+        if(i == {{parcel.chi_dan_gui}}) {
+            chi_dan_gui[i].setAttribute("checked", "checked");
+        } else {
+            chi_dan_gui[i].removeAttribute("checked");
+        }
+    }
+</script>
 </html>

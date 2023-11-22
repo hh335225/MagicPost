@@ -323,7 +323,6 @@
   padding-left: 15px; }
 
 .search-items-input input {
-  text-transform: uppercase;
   width: 90%;
   border: 1px solid rgba(49, 49, 49, 0.3);
   border-radius: 4px;

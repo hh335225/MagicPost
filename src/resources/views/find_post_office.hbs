@@ -18,7 +18,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        Tim kiem buu cuc
+                        Tìm kiếm bưu cục
                     </li>
                 </ol>
             </nav>
@@ -27,31 +27,27 @@
             <div class="container">
                 <div class="row">
                     <div class="box-title text-uppercase">
-                        Tim Kiem Buu cuc
+                        Tìm kiếm bưu cục
                     </div>
-                    <form action="" style="width: 100%;">
+                    <form style="width: 100%;" id="form_postal_office">
                         <div class="col-search-box">
                             <div class="search-box">
                                 <div class="col-tmp-1 col-left">
-                                    <label>Tinh/Thanh pho</label>
-                                    <select name="provinceId" id="province" class="form-control">
-                                        <option value="-1">Chon Tinh/Thanh pho</option>
-                                        <option value="29">Ha Noi</option>
-                                        <option value="17">Thai Binh</option>
-                                        <option value="19">Phu Tho</option>
-                                        <option value="90">Ha Nam</option>
+                                    <label>Tỉnh/Thành phố</label>
+                                    <select name="provinceId" id="city" class="form-control citySelect">
+                                        <option value="-1">Chọn Tỉnh/Thành phố</option>
+                                        
                                     </select>
                                 </div>
                                 <div class="col-tmp-1 col-left col-right">
-                                    <label>Quan/Huyen</label>
-                                    <select name="districtId" id="district" class="form-control">
-                                        <option value="-1">Chon Quan/Huyen</option>
-                                        <option value="291">Dong Da</option>
-                                        <option value="292">Cau Giay</option>
+                                    <label>Quận/Huyện</label>
+                                    <select name="districtId" id="district" class="form-control districtSelect">
+                                        <option value="-1">Chọn Quận/Huyện</option>
+                                        
                                     </select>
                                 </div>
                                 <div class="col-tmp-2 col-right col-left">
-                                    <input type="submit" value="Tim Kiem" class="btn btn-search-branch">
+                                    <input type="submit" value="Tìm Kiếm" class="btn btn-search-branch">
                                 </div>
                             </div>
                         </div>
@@ -61,123 +57,8 @@
                     <div class="list-col col-right">
                         <div class="list-post">
                             <div class="content-list-post">
-                                <h2>Danh sach buu cuc</h2>
+                                <h2>Danh sách bưu cục</h2>
                                 <div class="list-office">
-                                    <div class="post-item">
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-code.png" class="img_icon-code">
-                                                Ma so: 
-                                            </span>
-                                            <b class="post-code">551000</b>
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-buu-cuc.svg" class="img_icon-code">
-                                                Buu cuc: 
-                                            </span>
-                                            <b>Buu cuc 2 trung tam Ha Noi</b> 
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-location.svg" class="img_icon-code">
-                                                Dia chi: 
-                                            </span>
-                                            <b>So 162, Xa Dan, Quan Dong Da(DT: 0999999999)</b>              
-                                        </p>
-                                    </div>
-                                    <div class="post-item">
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-code.png" class="img_icon-code">
-                                                Ma so: 
-                                            </span>
-                                            <b class="post-code">551000</b>
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-buu-cuc.svg" class="img_icon-code">
-                                                Buu cuc: 
-                                            </span>
-                                            <b>Buu cuc 2 trung tam Ha Noi</b> 
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-location.svg" class="img_icon-code">
-                                                Dia chi: 
-                                            </span>
-                                            <b>So 162, Xa Dan, Quan Dong Da(DT: 0999999999)</b>              
-                                        </p>
-                                    </div>
-                                    <div class="post-item">
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-code.png" class="img_icon-code">
-                                                Ma so: 
-                                            </span>
-                                            <b class="post-code">551000</b>
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-buu-cuc.svg" class="img_icon-code">
-                                                Buu cuc: 
-                                            </span>
-                                            <b>Buu cuc 2 trung tam Ha Noi</b> 
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-location.svg" class="img_icon-code">
-                                                Dia chi: 
-                                            </span>
-                                            <b>So 162, Xa Dan, Quan Dong Da(DT: 0999999999)</b>              
-                                        </p>
-                                    </div>
-                                    <div class="post-item">
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-code.png" class="img_icon-code">
-                                                Ma so: 
-                                            </span>
-                                            <b class="post-code">551000</b>
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-buu-cuc.svg" class="img_icon-code">
-                                                Buu cuc: 
-                                            </span>
-                                            <b>Buu cuc 2 trung tam Ha Noi</b> 
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-location.svg" class="img_icon-code">
-                                                Dia chi: 
-                                            </span>
-                                            <b>So 162, Xa Dan, Quan Dong Da(DT: 0999999999)</b>              
-                                        </p>
-                                    </div>
-                                    <div class="post-item">
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-code.png" class="img_icon-code">
-                                                Ma so: 
-                                            </span>
-                                            <b class="post-code">551000</b>
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-buu-cuc.svg" class="img_icon-code">
-                                                Buu cuc: 
-                                            </span>
-                                            <b>Buu cuc 2 trung tam Ha Noi</b> 
-                                        </p>
-                                        <p>
-                                            <span class="title-post">
-                                                <img src="./img/icon-location.svg" class="img_icon-code">
-                                                Dia chi: 
-                                            </span>
-                                            <b>So 162, Xa Dan, Quan Dong Da(DT: 0999999999)</b>              
-                                        </p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -190,4 +71,64 @@
         </section>
     </div>
 </body>
+<script src="/js/select_city_form.js"></script>
+<script>
+    $(document).ready(function () {
+            $('#form_postal_office').submit(function (event) {
+                event.preventDefault();
+                
+                
+                var city = document.getElementById('city').value;
+                var district = document.getElementById('district').value;
+               
+                var list_office_contain = document.getElementsByClassName('list-office')[0];
+                list_office_contain.innerHTML = "";
+                
+
+                $.ajax({
+                url: '/find_post_office',
+                type: 'POST',
+                data: {
+                    city: city,
+                    district: district
+                }
+                })
+                .done(res => {
+                    if(res){
+                        console.log(res.data);
+                        res.data.forEach(item => {
+                            console.log(item);
+                            list_office_contain.innerHTML += `<div class="post-item">
+                                        <p>
+                                            <span class="title-post">
+                                                <img src="./img/icon-code.png" class="img_icon-code">
+                                                Mã số: 
+                                            </span>
+                                            <b class="post-code">${item._id}</b>
+                                        </p>
+                                        <p>
+                                            <span class="title-post">
+                                                <img src="./img/icon-buu-cuc.svg" class="img_icon-code">
+                                                Bưu cục: 
+                                            </span>
+                                            <b>${item.name}</b> 
+                                        </p>
+                                        <p>
+                                            <span class="title-post">
+                                                <img src="./img/icon-location.svg" class="img_icon-code">
+                                                Địa chỉ: 
+                                            </span>
+                                            <b>${item.street} (ĐT: ${item.phone_number})</b>              
+                                        </p>
+                                    </div>`
+                                    
+                        })
+                    }
+                })
+                .fail(err => {
+                    console.log(err)
+                    })
+            });
+        });
+</script>
 </html>

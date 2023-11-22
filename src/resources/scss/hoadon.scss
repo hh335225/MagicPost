@@ -36,7 +36,7 @@ body {
 }
 
 .hoadon_container .logo_qr_container .qr_hoadon .code_hoadon{
-    margin-left: 36%;
+    margin-left: 26%;
 }
 
 .hoadon_container .hoadon_content {
@@ -62,15 +62,15 @@ body {
 }
 
 .hoadon_container .hoadon_content .other_info {
-    display: flex;
+    // display: flex;
     padding: 5px;
     margin-top: 10px;
 }
 
-.hoadon_container .hoadon_content .other_info >div{
-    flex: 0 0 50%;
-    max-width: 50%;
-}
+// .hoadon_container .hoadon_content .other_info >div{
+//     flex: 0 0 50%;
+//     max-width: 50%;
+// }
 
 .hoadon_container .hoadon_content .hoadon_left .sectors_checkbox {
     display: flex;

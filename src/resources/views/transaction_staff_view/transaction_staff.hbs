@@ -12,143 +12,135 @@
     <div class="page_container">
         <main class="main_content">
             <div id="mainContent">
+                
                 <div class="full_container">
                     <div class="content_title">
                         CHẤP NHẬN BƯU GỬI LẺ
                     </div>
+                    <form action="/" method="post" id="parcel_form">
                     <div class="customer_info">
-                        <form class="sent_info">
+                        <div class="form sent_info">
                             <div class="tmp">
                             <label for="senderName">Tên Người Gửi
                                 <span style="color: red;">*</span>
                                 <span>:</span>
                             </label>
-                            <input type="text" id="senderName" name="senderName" required>
+                            <input type="text" id="send_name" name="senderName" required>
                             <div class="form-group">
                                 <div>
                                     <label for="city">Tỉnh/Thành Phố:</label>
-                                    <select id="city" name="city" required>
+                                    <select id="send_city" name="city" class="citySelect" required>
                                         <option value="city1">--Chọn Tỉnh/Thành phố--</option>
-                                        <option value="city2">Hà Nội</option>
-                                        <option value="city3">Thái Bình</option>
                                     </select>
                                 </div>
                     
                                 <div>
                                     <label for="district">Quận/Huyện:</label>
-                                    <select id="district" name="district" required>
+                                    <select id="send_district" name="district" class="districtSelect" required>
                                         <option value="district1">--Chọn Quận/Huyện--</option>
-                                        <option value="district2">Đông Hưng</option>
-                                        <option value="district3">Tiền Hải</option>
+                
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div>
                                     <label for="ward">Phường/Xã:</label>
-                                    <select id="ward" name="ward" required>
+                                    <select id="send_commune" name="ward" class="communeSelect" required>
                                         <option value="ward0">--Chọn Phường/Xã--</option>
-                                        <option value="ward1">Trọng Quan</option>
-                                        <option value="ward2">Phú Châu</option>
+                                        
                                     </select>
                                 </div>
                     
                                 <div>
                                     <label for="postalCode">Mã Bưu Chính:</label>
-                                    <select id="postalCode" name="postalCode" required>
+                                    <select id="send_postal_code" name="postalCode" class="postal_codeSelect" required>
                                         <option value="code0">--Chọn Mã Bưu Chính--</option>
-                                        <option value="code1">Mã Bưu Chính 1</option>
-                                        <option value="code2">Mã Bưu Chính 2</option>
+                                        
                                     </select>
                                 </div>
                             </div>
 
-                            <label for="address_send">Địa chỉ chi tiết</label>
-                            <input type="text" id="address_send" name="address_send" required>
+                            {{!-- <label for="address_send">Địa chỉ chi tiết</label>
+                            <input type="text" id="send_street" name="address_send" required> --}}
                             <div class="form-group">
                                 <div>
                                     <label for="phoneNumber">Số Điện Thoại:</label>
-                                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                                    <input type="tel" id="send_phone_number" name="phoneNumber" required>
                                 </div>
                     
                                 <div>
                                     <label for="email">Email:</label>
-                                    <input type="email" id="email" name="email" required>
+                                    <input type="email" id="send_email" name="email" required>
                                 </div>
                             </div>
                             </div>
-                        </form>
-                        <form class="received_info">
+                        </div>
+                        <div class="form received_info">
                             <div class="tmp">
                             <label for="senderName">Tên Người Nhận
                                 <span style="color: red;">*</span>
                                 <span>:</span>
                             </label>
-                            <input type="text" id="senderName" name="senderName" required>
+                            <input type="text" id="recipient_name" name="senderName" required>
                             <div class="form-group">
                                 <div>
                                     <label for="city">Tỉnh/Thành Phố:</label>
-                                    <select id="city" name="city" required>
-                                        <option value="city1">--Chọn Tỉnh/Thành phố--</option>
-                                        <option value="city2">Hà Nội</option>
-                                        <option value="city3">Thái Bình</option>
+                                    <select id="recipient_city" name="city" class="citySelect" required>
+                                        <option >--Chọn Tỉnh/Thành phố--</option>
                                     </select>
                                 </div>
                     
                                 <div>
                                     <label for="district">Quận/Huyện:</label>
-                                    <select id="district" name="district" required>
-                                        <option value="district1">--Chọn Quận/Huyện--</option>
-                                        <option value="district2">Đông Hưng</option>
-                                        <option value="district3">Tiền Hải</option>
+                                    <select id="recipient_district" name="district" class="districtSelect" required>
+                                        <option >--Chọn Quận/Huyện--</option>
+                                        
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div>
                                     <label for="ward">Phường/Xã:</label>
-                                    <select id="ward" name="ward" required>
-                                        <option value="ward0">--Chọn Phường/Xã--</option>
-                                        <option value="ward1">Trọng Quan</option>
-                                        <option value="ward2">Phú Châu</option>
+                                    <select id="recipient_commune" name="ward" class="communeSelect" required>
+                                        <option >--Chọn Phường/Xã--</option>
+                                        
                                     </select>
                                 </div>
                     
                                 <div>
                                     <label for="postalCode">Mã Bưu Chính:</label>
-                                    <select id="postalCode" name="postalCode" required>
-                                        <option value="code0">--Chọn Mã Bưu Chính--</option>
-                                        <option value="code1">Mã Bưu Chính 1</option>
-                                        <option value="code2">Mã Bưu Chính 2</option>
+                                    <select id="recipient_postal_code" name="postalCode" class="postal_codeSelect" required>
+                                        <option >--Chọn Mã Bưu Chính--</option>
+                                       
                                     </select>
                                 </div>
                             </div>
 
-                            <label for="address_received">Địa chỉ chi tiết</label>
-                            <input type="text" id="address_received" name="address_received" required>
+                            {{!-- <label for="address_received">Địa chỉ chi tiết</label>
+                            <input type="text" id="recipient_street" name="address_received" required> --}}
                             <div class="form-group">
                                 <div>
                                     <label for="phoneNumber">Số Điện Thoại:</label>
-                                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                                    <input type="tel" id="recipient_phone_number" name="phoneNumber" required>
                                 </div>
                     
                                 <div>
                                     <label for="email">Email:</label>
-                                    <input type="email" id="email" name="email" required>
+                                    <input type="email" id="recipient_email" name="email" required>
                                 </div>
                             </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="container_info_product">
                         <div class="form-section">
                             <div class="inline-inputs">
                                 <div>
                                     <label for="packageType">Loại Hàng: </label>
-                                    <select id="packageType" name="packageType">
-                                        <option value="type0">--Loại hàng gửi--</option>
-                                        <option value="type1">Tài liệu</option>
-                                        <option value="type2">Hàng hóa</option>
+                                    <select id="loai_hang" name="packageType">
+                                        <option>--Loại hàng gửi--</option>
+                                        <option value="Tài liệu">Tài liệu</option>
+                                        <option value="Hàng hóa">Hàng hóa</option>
                                     </select>
                                 </div>
                                 <div>
@@ -159,24 +151,24 @@
                                 
                                 <div>
                                     <label for="note">Chỉ dẫn khi gửi thất bại: </label>
-                                    <select id="note" name="note">
-                                        <option value="note0">--Chọn chỉ dẫn--</option>
-                                        <option value="note1">Chuyển hoàn ngay</option>
-                                        <option value="note2">Gọi điện cho người gửi</option>
-                                        <option value="note3">Chuyển hoàn trước ngày</option>
-                                        <option value="note4">Chuyển hoàn khi hết thời gian lưu trữ</option>
-                                        <option value="note5">Hủy</option>
+                                    <select id="chi_dan_gui" name="note">
+                                        <option >--Chọn chỉ dẫn--</option>
+                                        <option value="Chuyển hoàn ngay">Chuyển hoàn ngay</option>
+                                        <option value="Gọi điện cho người gửi">Gọi điện cho người gửi</option>
+                                        <option value="Chuyển hoàn trước ngày">Chuyển hoàn trước ngày</option>
+                                        <option value="Chuyển hoàn khi hết thời gian lưu trữ">Chuyển hoàn khi hết thời gian lưu trữ</option>
+                                        <option value="Hủy">Hủy</option>
                                     </select>
                                 </div>
                             
                             </div>
                             <div>
                                 <label for="businessValue">Chú Dẫn Nghiệp Vụ</label>
-                                <textarea id="businessValue" name="businessValue" style="width: 100%; height: 80px;"></textarea>
+                                <textarea id="chu_dan_nv" name="businessValue" style="width: 100%; height: 80px;"></textarea>
                             </div>
                             <div>
                                 <label for="additionalService">Dịch Vụ Thêm</label>
-                                <textarea type="text" id="additionalService" name="additionalService" style="width: 100%; height: 80px;"></textarea>
+                                <textarea type="text" id="dich_vu" name="additionalService" style="width: 100%; height: 80px;"></textarea>
                             </div>
                             
                         </div>
@@ -197,12 +189,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {{!-- <tr>
                                         <td><input type="text" name="content[]" oninput="updateTotal()"></td>
                                         <td><input type="number" name="quantity[]" oninput="updateTotal()"></td>
                                         <td><input type="number" name="value[]" oninput="updateTotal()"></td>
                                         <td><input type="text" name="documents[]" oninput="updateTotal()"></td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <td><input type="text" name="SUM" value="Tổng" style="text-align: center; font-size: 14px; font-weight: 400;" readonly></td>
                                         <td><input type="number" name="quantity[]" readonly></td>
@@ -216,16 +208,16 @@
                             <div class="total-section">
                                 <div>
                                     <label for="estimatedFee">Cước chính:</label>
-                                    <input type="number" id="estimatedFee" name="estimatedFee" oninput="updateTotal_()">
+                                    <input type="number" id="cuoc_chinh" name="estimatedFee" oninput="updateTotal_()">
                                 </div>
                                 <div>
                                     <label for="additionalFee">Phụ phí:</label>
-                                    <input type="number" id="additionalFee" name="additionalFee" oninput="updateTotal_()">
+                                    <input type="number" id="phu_thu" name="additionalFee" oninput="updateTotal_()">
                                 </div>
                 
                                 <div>
                                     <label for="cashOnDelivery">Thu hộ:</label>
-                                    <input type="number" id="cashOnDelivery" name="cashOnDelivery">
+                                    <input type="number" id="thu_ho" name="cashOnDelivery">
                                 </div>
                             </div>
                 
@@ -237,14 +229,112 @@
                     </div>
                     <div class="submit_info">
                         <div class="btn_submit_info">
-                            <input type="button" value="TẠO ĐƠN">
+                            <input id="submit_form" type="button" value="TẠO ĐƠN">
                         </div>
                     </div>
+                    </form>
                 </div>
+                
             </div>
         </main>
     </div>
 </body>
+<script src="/js/select_city_form.js"></script>
+<script>
+    var form = document.getElementById('parcel_form');
+    $(document).ready(function () {
+            $('#submit_form').click(function (event) {
+                var send_name = document.getElementById('send_name').value;
+                var recipient_name = document.getElementById('recipient_name').value;
+                var send_city = document.getElementById('send_city').value;
+                var send_district = document.getElementById('send_district').value;
+                var send_commune = document.getElementById('send_commune').value;
+                var send_postal_code = document.getElementById('send_postal_code').value;
+                {{!-- var send_street = document.getElementById('send_street').value; --}}
+                var send_phone_number = document.getElementById('send_phone_number').value;
+                var send_email = document.getElementById('send_email').value;
+                var recipient_city = document.getElementById('recipient_city').value;
+                var recipient_district = document.getElementById('recipient_district').value;
+                var recipient_commune = document.getElementById('recipient_commune').value;
+                var recipient_postal_code = document.getElementById('recipient_postal_code').value;
+                {{!-- var recipient_street = document.getElementById('recipient_street').value; --}}
+                var recipient_phone_number = document.getElementById('recipient_phone_number').value;
+                var recipient_email = document.getElementById('recipient_email').value;
+                var loai_hang = document.getElementById('loai_hang').value;
+                var weight = document.getElementById('weight').value || 0;
+                var chi_dan_gui = document.getElementById('chi_dan_gui').value;
+                var chu_dan_nv = document.getElementById('chu_dan_nv').value;
+                var dich_vu = document.getElementById('dich_vu').value;
+                var cuoc_chinh = document.getElementById('cuoc_chinh').value || 0;
+                var phu_thu = document.getElementById('phu_thu').value || 0;
+                var thu_ho = document.getElementById('thu_ho').value || 0;
+                var table_item = document.getElementById('parcelTable').getElementsByTagName('tr');
+
+                
+                var list_item = [];
+                if(table_item.length > 2) {
+                    for(var i = 1; i < table_item.length-1; i++) {
+                        var item = {
+                            name: table_item[i].getElementsByTagName('input')[0].value,
+                            so_luong: table_item[i].getElementsByTagName('input')[1].value,
+                            tri_gia: table_item[i].getElementsByTagName('input')[2].value,
+                            giay_to: table_item[i].getElementsByTagName('input')[3].value
+                        }
+                        if(item.name != "") {
+                            list_item[list_item.length] = item;
+                        }
+                        
+                    }
+                    console.log(list_item);
+                }   
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/transaction_staff/tao_don_hang',
+                    data: { 
+                        send_name : send_name,
+                        recipient_name : recipient_name,
+                        send_city : send_city,
+                        send_district : send_district,
+                        send_commune : send_commune,
+                        send_postal_code : send_postal_code,
+                        {{!-- send_street :send_street, --}}
+                        send_phone_number : send_phone_number,
+                        send_email : send_email,
+                        recipient_city : recipient_city,
+                        recipient_district : recipient_district,
+                        recipient_commune : recipient_commune,
+                        recipient_postal_code : recipient_postal_code,
+                        {{!-- recipient_street : recipient_street, --}}
+                        recipient_phone_number : recipient_phone_number,
+                        recipient_email : recipient_email,
+                        loai_hang : loai_hang,
+                        weight : weight,
+                        chi_dan_gui : chi_dan_gui,
+                        chu_dan_nv : chu_dan_nv,
+                        dich_vu : dich_vu,
+                        cuoc_chinh : cuoc_chinh,
+                        phu_thu : phu_thu,
+                        thu_ho : thu_ho,
+                        list_item : list_item
+                    }
+                })
+                .done(res => {
+                    if(res.message) {
+                        window.location.href = `/transaction_staff/hoadon/${res.code_tracking}`;
+                    } else {
+                        alert('loi tao hoa don');
+                    }
+                })
+                .fail(err => {
+                    console.log(err)
+                })
+
+            });
+        });
+    
+</script>
 <script>
     function addRow() {
             var table = document.getElementById("parcelTable").getElementsByTagName('tbody')[0];
@@ -286,11 +376,11 @@
         }
 
         function updateTotal_() {
-            var estimatedFee = parseFloat(document.getElementById("estimatedFee").value) || 0;
-            var additionalFee = parseFloat(document.getElementById("additionalFee").value) || 0;
-            var cashOnDelivery = parseFloat(document.getElementById("cashOnDelivery").value) || 0;
+            var estimatedFee = parseFloat(document.getElementById("cuoc_chinh").value) || 0;
+            var additionalFee = parseFloat(document.getElementById("phu_thu").value) || 0;
+            var cashOnDelivery = parseFloat(document.getElementById("thu_ho").value) || 0;
 
-            var total = estimatedFee + additionalFee + cashOnDelivery;
+            var total = estimatedFee + additionalFee;
 
             document.getElementById("total").value = total.toFixed(2); // Giữ 2 chữ số thập phân
         }

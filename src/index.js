@@ -59,7 +59,7 @@ app.engine(
       extname: '.hbs',   // rút gọn tên file
       helpers: {
         sum : function(a,b) {
-          return a+b;
+          return parseInt(a)+parseInt(b);
         },
         isNotNull: function(a) {
           if(a === null) {
@@ -67,7 +67,10 @@ app.engine(
           }
           return true;
         },
-        
+        or: function(a, b) {
+          if(a || b) return true;
+          else return false;
+        }
       }
     }));
 app.set('view engine', 'hbs');

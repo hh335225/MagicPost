@@ -89,7 +89,7 @@
   font-weight: 600;
   margin: 10px; }
 
-.customer_info form {
+.customer_info .form {
   max-width: 900px;
   width: 650px;
   margin: auto;
@@ -97,7 +97,7 @@
   border-radius: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); }
 
-.customer_info form .tmp {
+.customer_info .form .tmp {
   margin: 20px; }
 
 .customer_info label {

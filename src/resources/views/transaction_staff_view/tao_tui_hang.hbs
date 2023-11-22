@@ -23,38 +23,32 @@
                                 <div class="form-group">
                                     <div>
                                         <label for="city">Tỉnh/Thành Phố:</label>
-                                        <select id="city" name="city" required>
+                                        <select id="city" name="city" class="citySelect" required>
                                             <option value="city1">--Chọn Tỉnh/Thành phố--</option>
-                                            <option value="city2">Hà Nội</option>
-                                            <option value="city3">Thái Bình</option>
                                         </select>
                                     </div>
                         
                                     <div>
                                         <label for="district">Quận/Huyện:</label>
-                                        <select id="district" name="district" required>
+                                        <select id="district" name="district" class="districtSelect" required>
                                             <option value="district1">--Chọn Quận/Huyện--</option>
-                                            <option value="district2">Đông Hưng</option>
-                                            <option value="district3">Tiền Hải</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div>
                                         <label for="ward">Phường/Xã:</label>
-                                        <select id="ward" name="ward" required>
+                                        <select id="ward" name="ward" class="communeSelect" required>
                                             <option value="ward0">--Chọn Phường/Xã--</option>
-                                            <option value="ward1">Trọng Quan</option>
-                                            <option value="ward2">Phú Châu</option>
+                                            
                                         </select>
                                     </div>
                         
                                     <div>
                                         <label for="postalCode">Mã Bưu Chính:</label>
-                                        <select id="postalCode" name="postalCode" required>
+                                        <select id="postalCode" name="postalCode" class="postal_codeSelect" required>
                                             <option value="code0">--Chọn Mã Bưu Chính--</option>
-                                            <option value="code1">Mã Bưu Chính 1</option>
-                                            <option value="code2">Mã Bưu Chính 2</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -139,5 +133,7 @@
         </main>
     </div>
 </body>
+
+<script src="/js/select_city_form.js"></script>
 
 </html>

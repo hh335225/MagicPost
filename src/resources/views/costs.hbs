@@ -18,7 +18,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        Uoc tinh chi phi
+                        Ước tính chi phí
                     </li>
                 </ol>
             </nav>
@@ -27,61 +27,60 @@
             <div class="container">
                 <div class="row">
                     <div class="box-title text-uppercase">
-                        Uoc tinh chi phi
+                        Ước tính chi phí
                     </div>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane">
                         <section class="form-tinh-cuoc-phi">
-                            <form id="formChargeFee" action="" novalidate="novalidate">
+                            <form id="formChargeFee" novalidate="novalidate">
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="font-weight-bold">
-                                            Gui tu
+                                            Gửi từ
                                             <div class="d-inline" style="color: #ff0000;">*</div>
+                                            :
                                         </label>
-                                        <select name="form-address" required class="form-control send-from">
-                                            <option value>--Chon tinh gui--</option>
-                                            <option value="29">Ha Noi</option>
-                                            <option value="17">Thai Binh</option>
-                                            <option value="19">Phu Tho</option>
+                                        <select name="form-address" required class="form-control send-from citySelect">
+                                            <option >--Chọn tỉnh gửi--</option>
+                                            
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-bold">
-                                            Gui den
+                                            Gửi đến
                                             <div class="d-inline" style="color: #ff0000;">*</div>
+                                            :
                                         </label>
-                                        <select name="to-address" required class="form-control send-to">
-                                            <option value>--Chon tinh nhan--</option>
-                                            <option value="29">Ha Noi</option>
-                                            <option value="17">Thai Binh</option>
-                                            <option value="19">Phu Tho</option>
+                                        <select name="to-address" required class="form-control send-to citySelect">
+                                            <option >--Chọn tỉnh nhận--</option>
+                                            
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-bold">
-                                            Khoi luong (Gram)
+                                            Khối lượng (Kg)
                                             <div class="d-inline" style="color: #ff0000;">*</div>
+                                            :
                                         </label>
-                                        <input type="number" class="form-control weight" name="weight" placeholder="Nhap khoi luong">
+                                        <input type="number" class="form-control weight" name="weight" placeholder="Nhập khối lượng">
                                     </div>
                                     <div class="form-group">
                                         <label class="font-weight-bold">
-                                            Chi phi (VND)
+                                            Chi phí (VND):
                                             <div class="d-inline" style="color: #ff0000;"></div>
                                         </label>
-                                        <input type="text" value="0 VND" class="form-control weight" disabled>
+                                        <input type="text" value="0 VND" class="form-control weight costs" disabled>
                                     </div>
                                     <div class="btn-costs">
                                         <button type="submit" class="btn">
-                                            Tra cuu
+                                            Tra cứu
                                             <img src="/img/spin-infinite.gif" style="height: 30px; display: none;">
                                         </button>
                                     </div>
                                 </div>
                             </form>
-                            <div class="fee-result"></div>
+                            <div id="result" style="color: #ff0000;"></div>
                         </section>
                     </div>
                 </div>
@@ -89,4 +88,37 @@
         </section>
     </div>
 </body>
+<script src="/js/select_city_form.js"></script>
+<script>
+    $(document).ready(function () {
+            $('#formChargeFee').submit(function (event) {
+                event.preventDefault();
+                
+                document.getElementsByClassName('btn')[0].getElementsByTagName('img')[0].style.display = "inline-block";
+
+                var city1 = document.getElementsByClassName('send-from')[0].value;
+                var city2 = document.getElementsByClassName('send-to')[0].value;
+                var weight = document.getElementsByClassName('weight')[0].value;
+                console.log(city1, city2, weight);
+                
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/getDistance',
+                    data: { city1, city2 },
+                    success: function (response) {
+                        var costs = document.getElementsByClassName('costs')[0];
+                        costs.value =  parseFloat(response.distance*weight*200 + 50000).toString() + ' VNĐ';
+                        document.getElementsByClassName('btn')[0].getElementsByTagName('img')[0].style.display = "none";
+                        $('#result').text('');
+                    },
+                    error: function (error) {
+                        console.error(error);
+                        $('#result').text('Error calculating distance.');
+                        document.getElementsByClassName('btn')[0].getElementsByTagName('img')[0].style.display = "none";
+                    }
+                });
+            });
+        });
+</script>
 </html>

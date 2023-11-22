@@ -13,6 +13,8 @@
 
     {{#if transaction_staff_header}}
         {{> transaction_staff_header/header}}
+    {{else if none_header}} 
+        
     {{else}}
         {{> header}}
     {{/if}}
@@ -21,8 +23,11 @@
     {{{body}}}
 
 
-    {{#if showHeaderAndFooter}}
+    {{#if (or none_header transaction_staff_header)}}
+    
+    {{else}}
         {{> footer}}
     {{/if}}
+    
 </body>
 </html>

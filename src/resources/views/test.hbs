@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Distance</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h1>Calculate Distance</h1>
+    <form id="distanceForm">
+        <label for="city1">City 1:</label>
+        <input type="text" id="city1" name="city1" required>
+
+        <label for="city2">City 2:</label>
+        <input type="text" id="city2" name="city2" required>
+
+        <button type="submit">Calculate Distance</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        $(document).ready(function () {
+            $('#distanceForm').submit(function (event) {
+                event.preventDefault();
+                const city1 = $('#city1').val();
+                const city2 = $('#city2').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/getDistance',
+                    data: { city1, city2 },
+                    success: function (response) {
+                        $('#result').text(`Distance: ${response.distance} km`);
+                    },
+                    error: function (error) {
+                        console.error(error);
+                        $('#result').text('Error calculating distance.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
