@@ -17,7 +17,7 @@
             <div id="mainContent">
                 <div class="full_container">
                     <div class="content_title">
-                        DANH SACH TUI HANG DI
+                        DANH SÁCH TÚI HÀNG ĐI
                     </div>
                     
                     <div class="container_product_list">
@@ -41,135 +41,23 @@
                                   </div>
                             </div>
                             <div class="btn_find_for_date">
-                                <div class="btn_tim">
+                                <div class="btn_tim" id="btn_tim">
                                     <img src="/img/order-search.png" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="nav_bar_service">
-                            <input type="button" value="Xóa" name="delete">
-                            <input type="button" value="Cap nhat trang thai">
+                            {{!-- <input type="button" value="Xóa" name="delete">
+                            <input type="button" value="Cap nhat trang thai"> --}}
                             <!-- <input type="button" value="ALL"> -->
                         </div>
-                        <div class="product_list">
-                            <table id="product_list_table">
-                                <thead>
-                                    <tr>
-                                        <th><input type="checkbox" name="all" id="check_all"></th>
-                                        <th>Ma so tui</th>
-                                        <th>Buu cuc nhan</th>
-                                        <th>Nhan vien tao don</th>
-                                        <th>Ngay tao</th>
-                                        <th>Trang thai</th>
-                                        <th>Chi tiet tui hang</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-            
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Dong Hung</span>
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Vu Trong Hieu</span>
-                                        </td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>
-                                            <div class="btn_xac_nhan_chi_tiet_tui ">
-                                                <input type="button" value="Chi tiet">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Dong Hung</span>
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Vu Trong Hieu</span>
-                                        </td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>
-                                            <div class="btn_xac_nhan_chi_tiet_tui ">
-                                                <input type="button" value="Chi tiet">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Dong Hung</span>
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Vu Trong Hieu</span>
-                                        </td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>
-                                            <div class="btn_xac_nhan_chi_tiet_tui ">
-                                                <input type="button" value="Chi tiet">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Dong Hung</span>
-                                        </td>
-                                        <td>
-                                            <span>65412f17bf22195287703a0b</span>
-                                            <span>Vu Trong Hieu</span>
-                                        </td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>
-                                            <div class="btn_xac_nhan_chi_tiet_tui ">
-                                                <input type="button" value="Chi tiet">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="product_list" id="product_list">
+                            
                         </div>
-                    </div>
-                    
+                        <div id="error_note" style="display:;">
+                            <i style="color: red;">*Không tìm thấy túi hàng</i>
+                        </div>
+                    </div>    
                 </div>
             </div>
         </main>
@@ -199,36 +87,93 @@
     }
   </script>
 <script>
-    var table = document.getElementById('product_list_table');
-    var check_all = document.getElementById('check_all');
-    var check_list = document.getElementsByClassName('check_list');
-    console.log(check_list)
+    var tu_ngay = document.getElementById('datepicker1');
+    var den_ngay = document.getElementById('datepicker2');
+    var today = new Date();
+    tu_ngay.value = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
+    den_ngay.value = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;  
+</script>
+<script>
+    var load_data = function() {
+        var tu_ngay = document.getElementById('datepicker1').value;
+        var den_ngay = document.getElementById('datepicker2').value;
+        document.getElementById('product_list').innerHTML = ""
 
-    check_all.onchange = function() {
-        for(var i = 0; i < check_list.length; i++) {
-            check_list[i].checked = this.checked;
-        }
-    }
-
-    var check_check_all = function() {
-        for(var j = 0; j < check_list.length; j++) {
-            if(!check_list[j].checked) {
-                return false;
+        $.ajax({
+            url: '/transaction_staff/danh_sach_tui_di',
+            method: 'POST',
+            data: {
+                tu_ngay: tu_ngay,
+                den_ngay: den_ngay
             }
-        }
-        return true;
-    }
+        })
+        .done(res => {
+            if(res.checkBag) {
+                document.getElementById('error_note').style.display = "none"
+                document.getElementById('product_list').innerHTML = `
+                            <table id="product_list_table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã số túi</th>
+                                        <th>Bưu cục nhận</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Trạng thái</th>
+                                        <th>Chi tiết túi hàng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>`
 
-    for(var i = 0; i < check_list.length; i++) {
-        check_list[i].onchange = function() {
-            if(this.checked) {
-                if(check_check_all()) {
-                    check_all.checked = true;
-                }
+                for(var i = 0; i < res.data.length; i++) {
+                        document.getElementsByTagName('tbody')[0].innerHTML = document.getElementsByTagName('tbody')[0].innerHTML + 
+                                `<tr>
+                                    <td>
+                                        <span>${res.data[i]._id}</span>
+                                    </td>
+                                    <td>
+                                        <span>${res.data[i].ma_buu_cuc_nhan}</span>
+                                        
+                                    </td>
+                                    <td>
+                                        <span>${res.data[i].ngay_tao_don}</span>
+                                        <span>${res.data[i].gio_tao}</span>
+                                    </td>
+                                    <td>${res.data[i].trang_thai_hien_tai}</td>
+                                    <td>
+                                        <div class="btn_xac_nhan_chi_tiet_tui ">
+                                            <input type="button" class="chi_tiet_tui" code=${res.data[i]._id} value="Chi tiết">
+                                        </div>
+                                    </td>
+                                </tr>`
+                        }
+
+                var chi_tiet_list = document.getElementsByClassName('chi_tiet_tui');
+                chi_tiet_list = Array.from(chi_tiet_list);
+                chi_tiet_list.forEach(chi_tiet => {
+                    chi_tiet.onclick = function() {
+                        var code = chi_tiet.getAttribute("code")
+                        console.log(code);
+                        location.href = `/transaction_staff/thong_tin_tui_hang/${code}`
+                    }
+                })
             } else {
-                check_all.checked = false;
+                document.getElementById('error_note').style.display = "block"
             }
-        }
+        })
+        .fail(err => {
+            console.log(err)
+        })
     }
+</script>
+<script>
+    $(document).ready(load_data())
+
+    $(document).ready(function() {
+        document.getElementById("btn_tim").onclick = function(event) {
+            load_data()
+        }
+    })
 </script>
 </html>

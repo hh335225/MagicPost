@@ -35,20 +35,21 @@ const Parcel = new Schema({
             giay_to: {type: String}
         }
     ],
-    chim: {type: String, default: String("chim")},
     trang_thai: {
         type: [
             {
                 trang_thai: {type: String},
                 time: {type: Date},
-                vi_tri: {type: String}
+                vi_tri: {type: String},
+                postal_office_code: {type: Schema.Types.ObjectId}
             }
         ], 
         default: [
             {
                 trang_thai: 'Chấp nhận gửi',
                 time: Date.now(),
-                vi_tri: 'Bưu cục nhận đơn'
+                vi_tri: 'Bưu cục nhận đơn',
+                postal_office_code: {type: Schema.Types.ObjectId}
             }
         ]
     }

@@ -200,6 +200,10 @@
     text-align: center;
 }
 
+// .container_info_product th, td span{
+//     display: block;
+// }
+
 .container_info_product th {
     background-color: #f2f2f2;
 }
@@ -316,7 +320,7 @@
  .nav_bar_service {
     display: flex;
     margin-bottom: 10px;
-    width: 500px;
+    width: 200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -332,6 +336,7 @@
  .nav_bar_service input:hover{
     background-color: rgb(120, 179, 238);
     cursor: pointer;
+    
 }
 
 .container_product_list .product_list {
@@ -467,7 +472,7 @@
 }
 
 .main_content_xac_nhan .ma_tui_hang  input{
-    width: 30%;
+    width: 33%;
     border-radius: 5px;
     font-size: 20px;
     font-weight: 600;
@@ -478,8 +483,9 @@
 }
 
 .main_content_xac_nhan .thong_tin_buu_cuc_gui_nhan .ma_buu_cuc {
+    flex: 0 0 47%;
     display: flex;
-    margin: 10px 20px;
+    margin: 10px 0px;
     padding: 10px 10px;
     text-align: center  ;
 }
@@ -494,7 +500,7 @@
 }
 
 .main_content_xac_nhan .ma_buu_cuc  input{
-    width: 60%;
+    width: 63%;
     border-radius: 5px;
     font-size: 20px;
     font-weight: 600;
@@ -507,6 +513,7 @@
 .main_content_xac_nhan table th{
     background-color: rgb(90, 136, 243);
     padding: 10px 0px;
+    text-align: center;
 }
 
 .main_content_xac_nhan table .xac_nhan_item input{
@@ -843,7 +850,34 @@
     border: 2px dashed #ddd;
 }
 
+.btn_cn_trang_thai {
+    width: 50px;
+    height: 20px;
+    line-height: 15px;
+    align-items: center;
+    display: inline-block;
+}
+.cn_trang_thai {
+    width: 50px;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    padding: 0px;
+    border-radius: 5px;
+    background-color: #0072bc;
+    color: #fff;
+}
+.cn_trang_thai:hover {
+    background-color: #55b4f4;
+    cursor: pointer;
+}
 
+.select_trang_thai {
+    width: 80%;
+    text-align: center;
+    height: 20px;
+    margin-bottom: 5px;
+}
 
 
 

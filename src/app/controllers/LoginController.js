@@ -24,7 +24,8 @@ class LoginController {
             if(data) {
                 var token = jwt.sign({
                     _id: data._id,
-                    role: data.role
+                    role: data.role,
+                    postal_office_code: data.postal_office_code
                 }, process.env.ACCESS_TOKEN_SECRET)
                 res.json({
                     message:'Thanh cong',

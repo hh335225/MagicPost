@@ -29,33 +29,31 @@
                             <div class="form-group">
                                 <div>
                                     <label for="city">Tỉnh/Thành Phố:</label>
-                                    <select id="send_city" name="city" class="citySelect" required>
-                                        <option value="city1">--Chọn Tỉnh/Thành phố--</option>
+                                    <select id="send_city" name="city" class="citySelect" required disabled>
+                                        <option>{{data.city}}</option>
                                     </select>
+                                    
                                 </div>
                     
                                 <div>
                                     <label for="district">Quận/Huyện:</label>
-                                    <select id="send_district" name="district" class="districtSelect" required>
-                                        <option value="district1">--Chọn Quận/Huyện--</option>
-                
+                                    <select id="send_district" name="district" class="districtSelect" required disabled>
+                                        <option>{{data.district}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div>
                                     <label for="ward">Phường/Xã:</label>
-                                    <select id="send_commune" name="ward" class="communeSelect" required>
-                                        <option value="ward0">--Chọn Phường/Xã--</option>
-                                        
+                                    <select id="send_commune" name="ward" class="communeSelect" required disabled>
+                                        <option>{{data.commune}}</option>
                                     </select>
                                 </div>
                     
                                 <div>
                                     <label for="postalCode">Mã Bưu Chính:</label>
-                                    <select id="send_postal_code" name="postalCode" class="postal_codeSelect" required>
-                                        <option value="code0">--Chọn Mã Bưu Chính--</option>
-                                        
+                                    <select id="send_postal_code" name="postalCode" class="postal_codeSelect" required disabled>
+                                        <option>{{data._id}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -238,8 +236,81 @@
             </div>
         </main>
     </div>
+    <div class="Order_Success hidden" id="Order_Success">
+        <div class="ReactModal__Overlay ReactModal__Overlay--after-open" 
+            style="position: fixed; inset: 0px; background-color: rgba(39, 39, 42, 0.7); z-index: 999;">
+            <div class="ReactModal__Content ReactModal__Content--after-open" 
+                tabindex="-1" role="dialog" aria-modal="true" 
+                style="position: absolute; inset: 50% 40px auto 50%; border: 1px solid rgb(204, 204, 204); 
+                        background: rgb(255, 255, 255); overflow: auto; border-radius: 8px; outline: none; 
+                        padding: 16px; width: 311px; transform: translate(-50%, -50%); background-color:">
+                <div class="styles__StyledDialog-sc-10typcj-0 Pvpwm">
+                    <div class="dialog-content" style="color: rgb(56, 56, 61); margin-bottom: 24px; display: flex;">
+                        {{!-- <svg width="24" height="24" class="dialog-content__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; flex-shrink: 0;"> --}}
+                            <img src="/img/success_icon.png" alt="order_success" width="24" height="24" style="margin-right:10px;">
+                        {{!-- </svg> --}}
+                        <div class="dialog-content__text">
+                            <div class="dialog-content__title" style="font-size: 16px; line-height: 24px; font-weight: 500; margin-bottom: 8px;">Tạo đơn thành công!!!</div>
+                            <div class="dialog-content__message" style="font-size: 14px; line-height: 20px; color: rgb(81, 81, 88); word-break: break-word;">Đơn hàng đã được tạo thành công.</div>
+                        </div>
+                    </div>
+                    <div class="dialog-control" style="display: flex; text-align: center; font-size: 14px; line-height: 20px; font-weight: 500; -webkit-box-pack: end; justify-content: flex-end;">
+                        <div id="order_page" class="dialog-control__button dialog-control__button--main" 
+                            style="padding: 8px 16px; border-radius: 4px; height: 36px; 
+                                    cursor: pointer; box-sizing: border-box; 
+                                    background-color: rgb(11, 116, 229); 
+                                    color: rgb(255, 255, 255);">Xác nhận
+                        </div>
+                        <div id="back_home_page" class="dialog-control__button dialog-control__button--secondary" 
+                            style="padding: 8px 16px; border-radius: 4px; 
+                                    height: 36px; cursor: pointer; box-sizing: border-box; 
+                                    border: 1px solid rgb(11, 116, 229); 
+                                    color: rgb(11, 116, 229); margin-right: 8px;">Xem hóa đơn
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Order_failed hidden" id="Order_failed">
+        <div class="ReactModal__Overlay ReactModal__Overlay--after-open" 
+            style="position: fixed; inset: 0px; background-color: rgba(39, 39, 42, 0.7); z-index: 999;">
+            <div class="ReactModal__Content ReactModal__Content--after-open" 
+                tabindex="-1" role="dialog" aria-modal="true" 
+                style="position: absolute; inset: 50% 40px auto 50%; border: 1px solid rgb(204, 204, 204); 
+                        background: rgb(255, 255, 255); overflow: auto; border-radius: 8px; outline: none; 
+                        padding: 16px; width: 311px; transform: translate(-50%, -50%); background-color:">
+                <div class="styles__StyledDialog-sc-10typcj-0 Pvpwm">
+                    <div class="dialog-content" style="color: rgb(56, 56, 61); margin-bottom: 24px; display: flex;">
+                        {{!-- <svg width="24" height="24" class="dialog-content__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; flex-shrink: 0;"> --}}
+                            <img src="/img/cancel.png" alt="order_failed" width="24" height="24" style="margin-right:10px;">
+                        {{!-- </svg> --}}
+                        <div class="dialog-content__text">
+                            <div class="dialog-content__title" style="font-size: 16px; line-height: 24px; font-weight: 500; margin-bottom: 8px;">Tạo đơn thất bại!!!</div>
+                            <div class="dialog-content__message" style="font-size: 14px; line-height: 20px; color: rgb(81, 81, 88); word-break: break-word;">Đơn hàng chưa được tạo.</div>
+                        </div>
+                    </div>
+                    <div class="dialog-control" style="display: flex; text-align: center; font-size: 14px; line-height: 20px; font-weight: 500; -webkit-box-pack: end; justify-content: flex-end;">
+                        <div id="cart_page" class="dialog-control__button dialog-control__button--main" 
+                            style="padding: 8px 16px; border-radius: 4px; height: 36px; 
+                                    cursor: pointer; box-sizing: border-box; 
+                                    background-color: rgb(11, 116, 229); 
+                                    color: rgb(255, 255, 255);">Xác nhận</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="/js/select_city_form.js"></script>
+<script>
+    var send_city = document.getElementById('send_city').value;
+    var send_district = document.getElementById('send_district').value;
+    var send_commune = document.getElementById('send_commune').value;
+    var send_postal_code = document.getElementById('send_postal_code').value;
+
+    console.log(send_city, send_postal_code)
+</script>
 <script>
     var form = document.getElementById('parcel_form');
     $(document).ready(function () {
@@ -322,9 +393,11 @@
                 })
                 .done(res => {
                     if(res.message) {
-                        window.location.href = `/transaction_staff/hoadon/${res.code_tracking}`;
+                        xac_nhan_thanh_cong(res.code_tracking);
+                        {{!-- window.location.href = `/transaction_staff/hoadon/${res.code_tracking}`; --}}
                     } else {
-                        alert('loi tao hoa don');
+                        xac_nhan_that_bai();
+                        {{!-- alert('loi tao hoa don'); --}}
                     }
                 })
                 .fail(err => {
@@ -384,5 +457,28 @@
 
             document.getElementById("total").value = total.toFixed(2); // Giữ 2 chữ số thập phân
         }
+</script>
+<script>
+    var xac_nhan_thanh_cong = function(url) {
+        var Order_Success = document.getElementById('Order_Success')
+        Order_Success.classList.remove('hidden');
+        var order_page = document.getElementById('order_page')
+        var home_page = document.getElementById('back_home_page')
+        order_page.onclick = function(event) {
+            window.location.href = ''
+        }
+        home_page.onclick = function(event) {
+            window.location.href = window.location.href = `/transaction_staff/hoadon/${url}`;
+        }
+    }
+
+    var xac_nhan_that_bai = function() {
+        var Order_failed = document.getElementById('Order_failed')
+        Order_failed.classList.remove('hide');
+        var cart_page = document.getElementById('cart_page')
+        cart_page.onclick = function(event) {
+            window.location.href = ''
+        }
+    }
 </script>
 </html>

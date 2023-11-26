@@ -6,6 +6,9 @@
     <title>Document</title>
     {{!-- <link rel="stylesheet" href="home.css"> --}}
     <link rel="stylesheet" href="/css/transation_staff.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
 </head>
 <body>
     
@@ -14,7 +17,7 @@
             <div id="mainContent">
                 <div class="full_container">
                     <div class="content_title">
-                        DANH SÁCH ĐƠN CHỜ XỬ LÝ
+                        DANH SÁCH ĐƠN TẠI BƯU CỤC
                     </div>
                     <div class="container_product_list">
                         <div class="form_input_time">
@@ -37,80 +40,21 @@
                                   </div>
                             </div>
                             <div class="btn_find_for_date">
-                                <div class="btn_tim">
+                                <div class="btn_tim" id="btn_tim">
                                     <img src="/img/order-search.png" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="nav_bar_service">
-                            <input type="button" value="Xóa" name="delete">
-                            <input type="button" value="Tạo túi hàng">
+                            {{!-- <input type="button" value="Xóa" name="delete"> --}}
+                            {{!-- <input type="button" value="Tạo túi hàng"> --}}
                             <!-- <input type="button" value="ALL"> -->
                         </div>
-                        <div class="product_list">
-                            <table id="product_list_table">
-                                <thead>
-                                    <tr>
-                                        <th><input type="checkbox" name="all" id="check_all"></th>
-                                        <th>Buu cuc giao dich</th>
-                                        <th>Ma don hang</th>
-                                        <th>Ten khach hang</th>
-                                        <th>Ngay tao</th>
-                                        <th>Trang thai</th>
-                                        <th>Chuyen don</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Gui di</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Gui di</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Hang hoan</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Hang hoan</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="product_list" id="product_list">
+                            
+                        </div>
+                        <div id="error_note" style="display:;">
+                            <i style="color: red;">*Không tìm thấy đơn hàng</i>
                         </div>
                     </div>
                     
@@ -119,6 +63,13 @@
         </main>
     </div>
 </body>
+<script>
+    var tu_ngay = document.getElementById('datepicker1');
+    var den_ngay = document.getElementById('datepicker2');
+    var today = new Date();
+    tu_ngay.value = today.getDate();
+    den_ngay.value = today.getDate();  
+</script>
 <script>
     var picker1 = new Pikaday({
       field: document.getElementById('datepicker1'),
@@ -142,38 +93,210 @@
       picker2.show();
     }
   </script>
+
 <script>
-    var table = document.getElementById('product_list_table');
-    var check_all = document.getElementById('check_all');
-    var check_list = document.getElementsByClassName('check_list');
-    console.log(check_list)
+    $(document).ready(function() {
+        var tu_ngay = document.getElementById('datepicker1').value;
+        var den_ngay = document.getElementById('datepicker2').value;
 
-    check_all.onchange = function() {
-        for(var i = 0; i < check_list.length; i++) {
-            check_list[i].checked = this.checked;
-        }
-    }
-
-    var check_check_all = function() {
-        for(var j = 0; j < check_list.length; j++) {
-            if(!check_list[j].checked) {
-                return false;
+        console.log(tu_ngay, den_ngay)
+        $.ajax({
+            url: '/transaction_staff/danh_sach_don',
+            method: 'POST',
+            data: {
+                tu_ngay: tu_ngay,
+                den_ngay: den_ngay
             }
-        }
-        return true;
-    }
+        })
+        .done(res => {
+                if(res) {
+                    if(res.message) {
+                        document.getElementById('error_note').style.display = "none"
+                        document.getElementById('product_list').innerHTML = `
+                            <table id="product_list_table">
+                                <thead>
+                                    <tr>
+                                        {{!-- <th><input type="checkbox" name="all" id="check_all"></th> --}}
+                                        <th>Bưu cục giao dịch</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Ngày tạo đơn</th>
+                                        <th>Trạng thái hiện tại</th>
+                                        <th>Vị trí hiện tại</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>`
 
-    for(var i = 0; i < check_list.length; i++) {
-        check_list[i].onchange = function() {
-            if(this.checked) {
-                if(check_check_all()) {
-                    check_all.checked = true;
+                        for(var i = 0; i < res.data.length; i++) {
+                            document.getElementsByTagName('tbody')[0].innerHTML = document.getElementsByTagName('tbody')[0].innerHTML + 
+                                    `<tr>
+                                        {{!-- <td><input type="checkbox" name="" id="" class="check_list"></td> --}}
+                                        <td>
+                                            <span>${res.data[i].send_postal_code}</span>
+                                            <span>${res.data[i].send_commune}</span>
+                                        </td>
+                                        <td>${res.data[i]._id}</td>
+                                        <td>${res.data[i].send_name}</td>
+                                        <td>
+                                            <span>${res.data[i].ngay}</span>
+                                            <span>${res.data[i].gio}</span>
+                                        </td>
+                                        <td>${res.data[i].trang_thai_hien_tai}</td>
+                                        <td>
+                                            <span>${res.data[i].vi_tri_hien_tai}</span>
+                                            <span>${res.data[i].vi_tri_hien_tai_2}</span>
+                                        </td>
+                                    </tr>`
+                        }
+                    } else {
+                        document.getElementById('error_note').style.display = "block"
+                    }
+                } else {
+                    document.getElementById('error_note').style.display = "block"
                 }
-            } else {
-                check_all.checked = false;
-            }
-        }
-    }
+            })
+            .fail(err => console.log(err))
+            .always(res => {
+                var table = document.getElementById('product_list_table');
+                if(table) {
+                    var check_all = document.getElementById('check_all');
+                    var check_list = document.getElementsByClassName('check_list');
 
+                    check_all.onchange = function() {
+                        for(var i = 0; i < check_list.length; i++) {
+                            check_list[i].checked = this.checked;
+                        }
+                    }
+
+                    var check_check_all = function() {
+                        for(var j = 0; j < check_list.length; j++) {
+                            if(!check_list[j].checked) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+
+                    for(var i = 0; i < check_list.length; i++) {
+                        check_list[i].onchange = function() {
+                            if(this.checked) {
+                                if(check_check_all()) {
+                                    check_all.checked = true;
+                                }
+                            } else {
+                                check_all.checked = false;
+                            }
+                        }
+                    }
+                }
+            })
+    })
+</script>
+<script>
+    $(document).ready(function() {
+        $('#btn_tim')[0].onclick = function(event) {
+            document.getElementById('product_list').innerHTML = ""
+            var tu_ngay = document.getElementById('datepicker1').value;
+            var den_ngay = document.getElementById('datepicker2').value;
+
+            console.log(tu_ngay, den_ngay)
+            $.ajax({
+                url: '/transaction_staff/danh_sach_don',
+                method: 'POST',
+                data: {
+                    tu_ngay: tu_ngay,
+                    den_ngay: den_ngay
+                }
+            })
+            .done(res => {
+                if(res) {
+                    if(res.message) {
+                        document.getElementById('error_note').style.display = "none"
+                        document.getElementById('product_list').innerHTML = `
+                            <table id="product_list_table">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" name="all" id="check_all"></th>
+                                        <th>Bưu cục giao dịch</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Ngày tạo đơn</th>
+                                        <th>Trạng thái hiện tại</th>
+                                        <th>Vị trí hiện tại</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>`
+
+                        for(var i = 0; i < res.data.length; i++) {
+                            document.getElementsByTagName('tbody')[0].innerHTML = document.getElementsByTagName('tbody')[0].innerHTML + 
+                                    `<tr>
+                                        <td><input type="checkbox" name="" id="" class="check_list"></td>
+                                        <td>
+                                            <span>${res.data[i].send_postal_code}</span>
+                                            <span>${res.data[i].send_commune}</span>
+                                        </td>
+                                        <td>${res.data[i]._id}</td>
+                                        <td>${res.data[i].send_name}</td>
+                                        <td>
+                                            <span>${res.data[i].ngay}</span>
+                                            <span>${res.data[i].gio}</span>
+                                        </td>
+                                        <td>${res.data[i].trang_thai_hien_tai}</td>
+                                        <td>
+                                            <span>${res.data[i].vi_tri_hien_tai}</span>
+                                            <span>${res.data[i].vi_tri_hien_tai_2}</span>
+                                        </td>
+                                    </tr>`
+                        }
+                    } else {
+                        document.getElementById('error_note').style.display = "block"
+                    }
+                } else {
+                    document.getElementById('error_note').style.display = "block"
+                }
+            })
+            .fail(err => console.log(err))
+            .always(res => {
+                var table = document.getElementById('product_list_table');
+                if(table) {
+                    var check_all = document.getElementById('check_all');
+                    var check_list = document.getElementsByClassName('check_list');
+
+                    check_all.onchange = function() {
+                        for(var i = 0; i < check_list.length; i++) {
+                            check_list[i].checked = this.checked;
+                        }
+                    }
+
+                    var check_check_all = function() {
+                        for(var j = 0; j < check_list.length; j++) {
+                            if(!check_list[j].checked) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+
+                    for(var i = 0; i < check_list.length; i++) {
+                        check_list[i].onchange = function() {
+                            if(this.checked) {
+                                if(check_check_all()) {
+                                    check_all.checked = true;
+                                }
+                            } else {
+                                check_all.checked = false;
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    })
 </script>
 </html>

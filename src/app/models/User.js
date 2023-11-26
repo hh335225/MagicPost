@@ -8,6 +8,7 @@ const User = new Schema({
     email: {type: String},
     password: {type: String},
     username: {type: String},
+    postal_office_code: {type: Schema.Types.ObjectId}
 })
 
 export default mongoose.model('users', User)

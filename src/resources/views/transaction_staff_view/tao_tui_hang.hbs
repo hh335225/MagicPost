@@ -14,41 +14,40 @@
             <div id="mainContent">
                 <div class="full_container">
                     <div class="content_title">
-                        TAO TUI HANG
+                        TẠO TÚI HÀNG
                     </div>
                     <div class="customer_info">
-                        <form class="sent_info">
+                        <form class="sent_info form" >
                             <div class="tmp">
                                 
                                 <div class="form-group">
                                     <div>
                                         <label for="city">Tỉnh/Thành Phố:</label>
-                                        <select id="city" name="city" class="citySelect" required>
-                                            <option value="city1">--Chọn Tỉnh/Thành phố--</option>
+                                        <select id="city" name="city" class="citySelect" required disabled>
+                                            <option>{{data2.city}}</option>
                                         </select>
                                     </div>
                         
                                     <div>
                                         <label for="district">Quận/Huyện:</label>
-                                        <select id="district" name="district" class="districtSelect" required>
-                                            <option value="district1">--Chọn Quận/Huyện--</option>
+                                        <select id="district" name="district" class="districtSelect" required disabled>
+                                            <option>{{data2.district}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div>
                                         <label for="ward">Phường/Xã:</label>
-                                        <select id="ward" name="ward" class="communeSelect" required>
-                                            <option value="ward0">--Chọn Phường/Xã--</option>
+                                        <select id="commune" name="ward" class="communeSelect" required disabled>
+                                            <option>{{data2.commune}}</option>
                                             
                                         </select>
                                     </div>
                         
                                     <div>
                                         <label for="postalCode">Mã Bưu Chính:</label>
-                                        <select id="postalCode" name="postalCode" class="postal_codeSelect" required>
-                                            <option value="code0">--Chọn Mã Bưu Chính--</option>
-                                            
+                                        <select id="postalCode" name="postalCode" class="postal_codeSelect" required disabled>
+                                            <option>{{data2.to_warehouse}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -61,70 +60,37 @@
                                 <thead>
                                     <tr>
                                         <!-- <th><input type="checkbox" name="all" id="check_all"></th> -->
-                                        <th>Buu cuc giao dich</th>
-                                        <th>Ma don hang</th>
-                                        <th>Ten khach hang</th>
-                                        <th>Ngay tao</th>
-                                        <th>Trang thai</th>
-                                        <th>Chuyen don</th>
+                                        <th>Bưu cục giao dịch</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Trạng thái</th>
+                                        {{!-- <th>Chuyen don</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
+                                    {{#each data}}
+                                    <tr class="product_item" id={{this._id}}>
                                         <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
+                                            <span>{{this.send_postal_code}}</span>
+                                            <span>{{this.send_commune}}-{{this.send_district}}-{{this.send_city}}</span>
                                         </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Gui di</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
+                                        <td>{{this._id}}</td>
+                                        <td>{{this.send_name}}</td>
                                         <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
+                                            <span>{{this.ngay_tao}}</span>
+                                            <span>{{this.gio_tao}}</span>
                                         </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Gui di</td>
+                                        <td>{{this.trang_thai_hien_tai}}</td>
                                     </tr>
-                                    <tr>
-                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Hang hoan</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- <td><input type="checkbox" name="" id="" class="check_list"></td> -->
-                                        <td>65412f17bf22195287703a0b-Dong Hung</td>
-                                        <td>65412f17bf22195287703a0b</td>
-                                        <td>VU Trong Hieu</td>
-                                        <td>
-                                            <span>11/11/2023</span>
-                                            <span>15:23:00</span>
-                                        </td>
-                                        <td>Dang xu ly</td>
-                                        <td>Hang hoan</td>
-                                    </tr>
+                                    {{/each}}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="submit_tao_tui_hang">
                         <div class="btn_tao_tui_hang">
-                            <input type="button" value="Xac nhan tao tui hang">
+                            <input type="button" id="btn_submit_tao_tui" value="Xác nhận tạo túi hàng">
                         </div>
                     </div>
                     
@@ -132,8 +98,118 @@
             </div>
         </main>
     </div>
+    <div class="Order_Success hidden" id="Order_Success">
+        <div class="ReactModal__Overlay ReactModal__Overlay--after-open" 
+            style="position: fixed; inset: 0px; background-color: rgba(39, 39, 42, 0.7); z-index: 999;">
+            <div class="ReactModal__Content ReactModal__Content--after-open" 
+                tabindex="-1" role="dialog" aria-modal="true" 
+                style="position: absolute; inset: 50% 40px auto 50%; border: 1px solid rgb(204, 204, 204); 
+                        background: rgb(255, 255, 255); overflow: auto; border-radius: 8px; outline: none; 
+                        padding: 16px; width: 311px; transform: translate(-50%, -50%); background-color:">
+                <div class="styles__StyledDialog-sc-10typcj-0 Pvpwm">
+                    <div class="dialog-content" style="color: rgb(56, 56, 61); margin-bottom: 24px; display: flex;">
+                        {{!-- <svg width="24" height="24" class="dialog-content__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; flex-shrink: 0;"> --}}
+                            <img src="/img/success_icon.png" alt="order_success" width="24" height="24" style="margin-right:10px;">
+                        {{!-- </svg> --}}
+                        <div class="dialog-content__text">
+                            <div class="dialog-content__title" style="font-size: 16px; line-height: 24px; font-weight: 500; margin-bottom: 8px;">Tạo thành công!!!</div>
+                            <div class="dialog-content__message" style="font-size: 14px; line-height: 20px; color: rgb(81, 81, 88); word-break: break-word;">Túi hàng đã được tạo và đang trong quá trình chuyển đi.</div>
+                        </div>
+                    </div>
+                    <div class="dialog-control" style="display: flex; text-align: center; font-size: 14px; line-height: 20px; font-weight: 500; -webkit-box-pack: end; justify-content: flex-end;">
+                        <div id="order_page" class="dialog-control__button dialog-control__button--main" 
+                            style="padding: 8px 16px; border-radius: 4px; height: 36px; 
+                                    cursor: pointer; box-sizing: border-box; 
+                                    background-color: rgb(11, 116, 229); 
+                                    color: rgb(255, 255, 255);">Xác nhận
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Order_failed hidden" id="Order_failed">
+        <div class="ReactModal__Overlay ReactModal__Overlay--after-open" 
+            style="position: fixed; inset: 0px; background-color: rgba(39, 39, 42, 0.7); z-index: 999;">
+            <div class="ReactModal__Content ReactModal__Content--after-open" 
+                tabindex="-1" role="dialog" aria-modal="true" 
+                style="position: absolute; inset: 50% 40px auto 50%; border: 1px solid rgb(204, 204, 204); 
+                        background: rgb(255, 255, 255); overflow: auto; border-radius: 8px; outline: none; 
+                        padding: 16px; width: 311px; transform: translate(-50%, -50%); background-color:">
+                <div class="styles__StyledDialog-sc-10typcj-0 Pvpwm">
+                    <div class="dialog-content" style="color: rgb(56, 56, 61); margin-bottom: 24px; display: flex;">
+                        {{!-- <svg width="24" height="24" class="dialog-content__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; flex-shrink: 0;"> --}}
+                            <img src="/img/cancel.png" alt="order_failed" width="24" height="24" style="margin-right:10px;">
+                        {{!-- </svg> --}}
+                        <div class="dialog-content__text">
+                            <div class="dialog-content__title" style="font-size: 16px; line-height: 24px; font-weight: 500; margin-bottom: 8px;">Tạo thất bại!!!</div>
+                            <div class="dialog-content__message" style="font-size: 14px; line-height: 20px; color: rgb(81, 81, 88); word-break: break-word;">Vui lòng thực hiện tạo lại từ đầu.</div>
+                        </div>
+                    </div>
+                    <div class="dialog-control" style="display: flex; text-align: center; font-size: 14px; line-height: 20px; font-weight: 500; -webkit-box-pack: end; justify-content: flex-end;">
+                        <div id="cart_page" class="dialog-control__button dialog-control__button--main" 
+                            style="padding: 8px 16px; border-radius: 4px; height: 36px; 
+                                    cursor: pointer; box-sizing: border-box; 
+                                    background-color: rgb(11, 116, 229); 
+                                    color: rgb(255, 255, 255);">Xác nhận</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script src="/js/select_city_form.js"></script>
+<script>
+    var city = document.getElementById('city').value;
+    var district = document.getElementById('district').value;
+    var commune = document.getElementById('commune').value;
+    var postal_code = document.getElementById('postalCode').value;
+    var product_id_list = document.getElementsByClassName('product_item');
+    product_id_list = Array.from(product_id_list);
+    product_id_list = product_id_list.map(product => {
+        return product.id;
+    })
+    var btn_submit = document.getElementById('btn_submit_tao_tui');
+    btn_submit.onclick = function(event) {
+        var postal_code = document.getElementById('postalCode').value;
+        $.ajax({
+            url: '/transaction_staff/tao_tui_hang',
+            method: 'POST',
+            data: {
+                receives_postal_office : postal_code,
+                product_id_list: product_id_list
+            }  
+        })
+        .done(res => {
+            if(res.message) {
+                order_success();
+            } else {
+                order_failed();
+            }
+        })
+        .fail(err => {
+            console.log(err);
+        })
+    }
 
+    var order_success = function() {
+        var Order_Success = document.getElementById('Order_Success')
+        Order_Success.classList.remove('hidden');
+        var order_page = document.getElementById('order_page')
+        order_page.onclick = function(event) {
+            window.location.href = './danh_sach_don'
+        }
+    }
+    var order_failed = function() {
+        var Order_failed = document.getElementById('Order_failed')
+        Order_failed.classList.remove('hide');
+        var cart_page = document.getElementById('cart_page')
+        cart_page.onclick = function(event) {
+            window.location.href = './danh_sach_don'
+        }
+    }
+    
+    
+</script>
 </html>

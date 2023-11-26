@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    {{!-- <link rel="stylesheet" href="/css/home.css"> --}}
     <link rel="stylesheet" href="/css/transation_staff.css">
-    <!-- <link rel="stylesheet" href="find.css"> -->
+    {{!-- <link rel="stylesheet" href="/css/find.css"> --}}
 </head>
+<style>
+        #iframeContainer {
+            width: 1300px;
+            height: 918px; /* Chiều cao bạn muốn hiển thị */
+            overflow: hidden; /* Ẩn phần dư thừa */
+        }
+        #myIframe {
+            border: none; /* Loại bỏ đường biên */
+            pointer-events: none; /* Không cho phép tương tác */
+            user-select: none; /* Không cho phép lựa chọn nội dung */
+        }
+    </style>
 <body>
     
     <div class="page_container">
@@ -15,94 +27,97 @@
             <div id="mainContent">
                 <div class="full_container">
                     <div class="content_title">
-                        TRA CUU DON HANG
+                        TRA CỨU ĐƠN HÀNG
                     </div>
                     <div class="tra_cuu_don_hang_staff">
                         <section class="find-items-content">
-                            <div class="search-code-items">
+                            <div class="search-code-items" style="background-color: aliceblue;">
                                 <div class="search-items-text">
-                                    <img src="./img/order-search.png" alt="">
-                                    <div>Ma buu gui (VD: dveviennvevoebo)</div>
+                                    <img src="/img/order-search.png" alt="">
+                                    <div>Mã bưu gửi (VD: 655ba7422bef17c718d6489f)</div>
                                 </div>
                                 <div class="search-items-input">
-                                    <form action="">
+                                    <form id="form_code_tracking" method="get" action="/transaction_staff/tra_cuu_don">
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <input type="text" name="code-tracking" placeholder="Nhap ma buu gui" >
+                                                <input type="text" name="code_tracking" id="input_code_tracking" placeholder="Nhập mã bưu gửi" value={{tracking_code}}>
                                             </div>
                                             <div class="col-sm-3">
-                                                <button class="btn-find_item">Tra cuu</button>
+                                                <button class="btn-find_item">Tra cứu</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <div>
-                                <i style="color: red;">*Khong tim thay don hang!!!</i>
-                            </div>
+                            
+                            
+                            {{#if found_parcel}}
                             <div class="order-search-info">
                                 <div class="order-search-info-title">
-                                    <h3>THONG TIN BUU GUI</h3>
+                                    <h3>THÔNG TIN BƯU GỬI</h3>
+                                </div>
+                                <div id="iframeContainer">
+                                    <iframe id="myIframe" code={{tracking_code}} src="" frameborder="0" height="1100px" width="1300px"></iframe>
                                 </div>
                                 <div class="order-search-info-top row">
                                     <div class="order-search-info-top-text col-lg-2 col-sm-3 col-6">
-                                        <div>So hieu buu gui</div>
-                                        <p>EB1259666699989VN</p>
+                                        <div>Code Tracking</div>
+                                        <p>{{tracking_code}}</p>
                                     </div>
                                     <div class="order-search-info-top-text col-lg-2 col-sm-3 col-6">
-                                        <div>Khoi luong (gram)</div>
-                                        <p>89</p>
+                                        <div>Khối lượng (kg)</div>
+                                        <p>{{data.weight}}</p>
                                     </div>
                                     <div class="order-search-info-top-text col-lg-4 col-sm-3 col-6">
-                                        <div>Noi gui</div>
-                                        <p>Buu cuc Thai Binh</p>
+                                        <div>Nơi gửi</div>
+                                        <p>{{noi_gui}}</p>
                                     </div>
                                     <div class="order-search-info-top-text col-lg-4 col-sm-3 col-6">
-                                        <div>Noi nhan</div>
-                                        <p>Buu cuc Dong Da</p>
+                                        <div>Nơi nhận</div>
+                                        <p>{{noi_nhan}}</p>
                                     </div>
                                 </div>
                                 <div class="order-search-info-middle row">
                                     <div class="col-lg-4-1 col-sm-6 col-12">
                                         <div>
-                                            Tinh gui:
-                                            <span>Thai Binh</span>
+                                            Tỉnh gửi:
+                                            <span>{{data.send_city}}</span>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-sm-6 col-12">
                                         <div>
-                                            Dia chi gui:
-                                            <span>Dong Hung</span>
+                                            Địa chỉ gửi:
+                                            <span>{{data.send_district}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order-search-info-middle row">
                                     <div class="col-lg-4-1 col-sm-6 col-12">
                                         <div>
-                                            Tinh Nhan:
-                                            <span>Ha Noi</span>
+                                            Tỉnh Nhận:
+                                            <span>{{data.recipient_city}}</span>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-sm-6 col-12">
                                         <div>
-                                            Dia chi nhan:
-                                            <span>Dong Da</span>
+                                            Địa chỉ nhận:
+                                            <span>{{data.recipient_district}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order-search-info-bottom row">
                                     <div class="col-12">
                                         <div>
-                                            Trang thai:
-                                            <span>Phat Thanh Cong</span>
+                                            Trạng thái:
+                                            <span>{{trang_thai}}</span>
                                         </div>
                                     </div>
                                 </div>
-                
+
                             </div>
                             <div class="order-search-info-status">
                                 <div class="order-search-info-status-title">
-                                    <h3>THONG TIN TRANG THAI</h3>
+                                    <h3>THÔNG TIN TRẠNG THÁI</h3>
                                 </div>
                                 <div class="order-search-info-status-content">
                                     <div class="table-responsive">
@@ -110,40 +125,33 @@
                                             <thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Ngay</th>
-                                                    <th>Gio</th>
-                                                    <th>Trang thai</th>
-                                                    <th>Vi tri</th>
+                                                    <th>Ngày</th>
+                                                    <th>Giờ</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Vị trí</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {{#each list_trang_thai}}
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>19/11/2023</td>
-                                                    <td>17:50:05</td>
-                                                    <td>Chap nhan gui(116868:Buu cuc Dong DA)</td>
-                                                    <td>88, Kim Hoa, Dong Da, Ha Noi</td>
+                                                    <td>{{sum @index 1}}</td>
+                                                    <td>{{this.ngay}}</td>
+                                                    <td>{{this.gio}}</td>
+                                                    <td>{{this.trang_thai}}</td>
+                                                    <td>{{this.vi_tri}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>19/11/2023</td>
-                                                    <td>21:50:05</td>
-                                                    <td>Roi khoi buu cuc</td>
-                                                    <td>88, Kim Hoa, Dong Da, Ha Noi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>19/11/2023</td>
-                                                    <td>23:50:05</td>
-                                                    <td>Van chuyen den buu cuc(123232:Buu cuc Dong Hung)</td>
-                                                    <td>TT Dong Hung, Dong Hung, Thai Binh</td>
-                                                </tr>
+                                                {{/each}}
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                
+                            
+                            {{else}}
+                            <div id="error_note" style="display:;">
+                                <i style="color: red;">*Không tìm thấy đơn hàng</i>
+                            </div>
+                            {{/if}}
                         </section>
                     </div>
                     
@@ -153,5 +161,11 @@
         </main>
     </div>
 </body>
-
+<script>
+    var iframe = document.getElementById('myIframe');
+    if(iframe) {
+        var code = iframe.getAttribute("code")
+        iframe.src = `http://localhost:3000/transaction_staff/hoadon/${code}`
+    }
+</script>
 </html>
