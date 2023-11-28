@@ -63,7 +63,8 @@ class CheckAuthentication {
         if(user) {
             var role = user.role;
             if(role_transaction_manager.includes(role)) {
-                req.user_data = {_id : user._id}
+                req.user_data = {_id : user._id,
+                                postal_office_code: user.postal_office_code}
                 next()
             } else {
                 return res.redirect('./');
@@ -84,7 +85,8 @@ class CheckAuthentication {
         if(user) {
             var role = user.role;
             if(role_warehouse_manager.includes(role)) {
-                req.user_data = {_id : user._id}
+                req.user_data = {_id : user._id,
+                                postal_office_code: user.postal_office_code}
                 next()
             } else {
                 return res.redirect('./');
@@ -105,7 +107,8 @@ class CheckAuthentication {
         if(user) {
             var role = user.role;
             if(role_warehouse_staff.includes(role)) {
-                req.user_data = {_id : user._id}
+                req.user_data = {_id : user._id,
+                                postal_office_code: user.postal_office_code}
                 next()
             } else {
                 return res.redirect('./');

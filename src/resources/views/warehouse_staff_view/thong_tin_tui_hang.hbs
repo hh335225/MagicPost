@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+</head>
+<body>
+    
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        THÔNG TIN TÚI HÀNG
+                    </div>
+                    
+                    <div class="container_product_list">
+                        <div class="main_content_xac_nhan">
+                            <div class="ma_tui_hang">
+                                <label for="ma_tui_hang">Mã túi hàng: </label>
+                                <input type="text" name="ma_tui_hang" id="ma_tui_hang" value={{data1.code_tracking}} readonly>
+                            </div>
+                            <div class="thong_tin_buu_cuc_gui_nhan">
+                                <div class="ma_buu_cuc">
+                                    <label for="buu_cuc_gui">Bưu cục gửi: </label>
+                                    <input type="text" name="buu_cuc_gui" id="buu_cuc_gui" value={{data1.send_postal_code}} readonly>
+                                </div>
+                                <div class="ma_buu_cuc">
+                                    <label for="buu_cuc_nhan">Bưu cục nhận: </label>
+                                    <input type="text" name="buu_cuc_nhan" id="buu_cuc_nhan" value={{data1.receives_postal_code}} readonly>
+                                </div>
+                            </div>
+                            <div class="ngay_gui_tui"style="padding-bottom: 10px;">
+                                <span>Ngày gửi: </span>
+                                <span id="Ngay_gui_tui">{{data1.ngay}}</span>
+                            </div>
+                            <div class="product_list">
+                                <table id="product_list_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Trạng thái hiện tại</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each data_}}
+                                        <tr>
+                                            <td>{{this._id}}</td>
+                                            <td>{{this.send_name}}</td>
+                                            <td>
+                                                <span>{{this.ngay_tao}}</span>
+                                                <span>{{this.gio_tao}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{this.trang_thai_hien_tai}}</span>
+                                                <span>{{this.vi_tri_hien_tai}}</span>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+
+</html>

@@ -24,7 +24,7 @@
             <div id="mainContent">
                 <div class="full_container">
                     <div class="content_title">
-                        DANH SÁCH ĐƠN TẠI BƯU CỤC
+                        DANH SÁCH ĐƠN TẠI KHO
                     </div>
                     <div class="container_product_list">
                         {{#if checkProduct}}
@@ -72,9 +72,7 @@
                                             <span>
                                                 <select name="select_trang_thai" class="select_trang_thai">
                                                     <option>--CN Trạng thái--</option>
-                                                    <option>Chấp nhận gửi</option>
-                                                    <option>Đã giao hàng</option>
-                                                    <option>Giao thất bại</option>
+                                                    <option>Đang chờ chuyển đi</option>
                                                     <option>Thất lạc</option>
                                                 </select>
                                             </span>
@@ -160,7 +158,7 @@
             </div>
         </div>
     </div>
-    <form action="/transaction_staff/tui_hang" method="post" id="product_list_form">
+    <form action="/warehouse_staff/tui_hang" method="post" id="product_list_form">
         <input type="hidden" name="product_id_list" id="input_product_id_list">
     </form>
 </body>
@@ -174,7 +172,6 @@
                         for(var i = 0; i < check_list.length; i++) {
                             check_list[i].checked = this.checked;
                         }
-
                         if(this.checked) {
                             document.getElementById('btn_tao_tui').classList.remove('check_btn');
                             document.getElementById('btn_tao_tui').removeAttribute("disabled");
@@ -252,7 +249,7 @@
         var trang_thai_moi = btn.parentNode.parentNode.parentNode.getElementsByClassName('select_trang_thai')[0].value;
 
         $.ajax({
-            url: '/transaction_staff/cap_nhap_trang_thai',
+            url: '/warehouse_staff/cap_nhap_trang_thai',
             method: 'POST',
             data: {
                 code_tracking: code_tracking,

@@ -10,7 +10,8 @@ const City = new Schema({
             communes:[{
                 name: {type: String},
                 postal_code: [{type:Schema.Types.ObjectId}]
-            }]
+            }],
+            warehouse_code: [{type: Schema.Types.ObjectId}]
         }
     ]
 });

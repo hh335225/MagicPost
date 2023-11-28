@@ -13,6 +13,8 @@
 
     {{#if transaction_staff_header}}
         {{> transaction_staff_header/header}}
+    {{else if warehouse_staff_header}} 
+        {{> warehouse_staff_header/header}}
     {{else if none_header}} 
         
     {{else}}
@@ -23,7 +25,7 @@
     {{{body}}}
 
 
-    {{#if (or none_header transaction_staff_header)}}
+    {{#if (or none_header transaction_staff_header warehouse_staff_header)}}
     
     {{else}}
         {{> footer}}

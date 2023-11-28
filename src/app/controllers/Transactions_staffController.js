@@ -110,9 +110,11 @@ class Transaction_staffController {
                         trang_thai: `Chấp nhận gửi`,
                         time: Date.now(),
                         vi_tri: vi_tri_,
-                        postal_office_code: req.user_data.postal_office_code
+                        postal_office_code: req.user_data.postal_office_code,
                     }
                 ]
+
+                newParcel.chuyen_don = "Hàng đi";
 
                 Parcels.create(newParcel)
                 .then(new_parcel => {
@@ -176,13 +178,15 @@ class Transaction_staffController {
                         ngay: ngay,
                         gio: gio,
                         trang_thai: trang_thai.trang_thai,
-                        vi_tri : trang_thai.vi_tri
+                        vi_tri : trang_thai.vi_tri,
+                        chuyen_don: trang_thai.chuyen_don
                     }
                 })
                 
+                
                 Promise.all(promiseList)
                 .then(tmp => {
-                    res.render('./transaction_staff_view/tra_cuu_don', {found_parcel,tracking_code,noi_gui, noi_nhan,trang_thai,list_trang_thai, data,transaction_staff_header})
+                    res.render('./transaction_staff_view/tra_cuu_don', {found_parcel,tracking_code,noi_gui, noi_nhan,trang_thai,list_trang_thai, data, transaction_staff_header})
                 })
                 
             }else {
@@ -211,7 +215,15 @@ class Transaction_staffController {
                         },
                         {
                             $match: {
-                                "lastObject.postal_office_code" :  postal_office_code,
+                                $and: [
+                                    { "lastObject.postal_office_code" :  postal_office_code,  },
+                                    {
+                                        $or : [
+                                            {"lastObject.trang_thai" : {$nin: ['Đã giao hàng', 'Thất lạc']}},
+                                            
+                                        ]
+                                    }
+                                ]  
                             }
                         }
                     ]).exec()
@@ -245,7 +257,7 @@ class Transaction_staffController {
                     data[i].ten_buu_cuc = data[i].trang_thai[0].vi_tri;
                     data[i].ten_nguoi_gui = data[i].send_name;
                     var check_ = true;
-                    if(trang_thai_hien_tai != "Chấp nhận gửi" && trang_thai_hien_tai != "Đã đến bưu cục") {
+                    if(trang_thai_hien_tai != "Chấp nhận gửi" && trang_thai_hien_tai != "Đã đến bưu cục" && trang_thai_hien_tai != "Giao thất bại") {
                         check_ = false;
                     }
                     data[i].check_ = check_;
@@ -809,9 +821,7 @@ class Transaction_staffController {
         var trang_thai_moi = req.body.trang_thai_moi;
         var postal_office_code = req.user_data.postal_office_code;
         var postal_office_code_ = new ObjectId(postal_office_code);
-        if(trang_thai_moi == "Đã giao hàng" || trang_thai_moi == "Thất lạc"){
-            postal_office_code_ = null;
-        }
+        
 
         Postal_office.findById(new ObjectId(postal_office_code))
         .then(postal => {
@@ -826,8 +836,12 @@ class Transaction_staffController {
                             time: Date.now(),
                             vi_tri: vi_tri,
                             postal_office_code: postal_office_code_,
+        
                         }
-                    }}
+                    },
+                        $set: trang_thai_moi == "Giao thất bại" ? {chuyen_don: "Hàng hoàn"} : {}
+                            
+                        }
                 )
                 .then(res_ => {
                     if(res_) {
@@ -850,6 +864,147 @@ class Transaction_staffController {
         })
 
         
+    }
+    show_giao_thanh_cong(req, res, next) {
+        res.render('./transaction_staff_view/danh_sach_giao_thanh_cong', {transaction_staff_header})
+    }
+
+    show_giao_that_bai(req, res, next) {
+        res.render('./transaction_staff_view/danh_sach_giao_that_bai', {transaction_staff_header})
+    }
+
+    giao_thanh_cong(req, res, next) {
+        var postal_office_code = new ObjectId(req.user_data.postal_office_code);
+        var tu_ngay = req.body.tu_ngay;
+        var den_ngay = req.body.den_ngay;
+        var [day, month, year] = tu_ngay.split('/');
+        const startTime = new Date(`${year}/${month}/${day}`);
+        var [day, month, year] = den_ngay.split('/');
+        const endTime = new Date(`${year}/${month}/${parseInt(day)+1}`);
+        console.log(postal_office_code, startTime, endTime)
+
+        function findProductList () {
+            return Parcels.aggregate([
+                       {
+                           $addFields: {
+                               lastObject : {
+                                   $arrayElemAt: ["$trang_thai", -1]
+                               }
+                           }
+                       },
+                       {
+                           $match: {
+                                "lastObject.postal_office_code" :  postal_office_code,  
+                                "lastObject.time": {$gte: startTime, $lte: endTime},
+                                "lastObject.trang_thai" : "Đã giao hàng"
+                           } 
+                       }
+                   ]).exec()
+       }
+       findProductList()
+        .then(data => {
+            console.log(data)
+            var checkProduct = false;
+            if(data.length != 0) {
+                checkProduct = true;
+                var number_format = function(number) {
+                    if(number.toString().length < 2){
+                        return `0${number.toString()}`;
+                    } else {
+                        return number;
+                    }
+                }
+                for(var i = 0; i< data.length; i++) {
+                    // data[i] = data[i].toObject();
+                    var time = data[i].trang_thai[0].time;
+                    var ngay1 = `${number_format(time.getDate())}/${number_format(time.getMonth() + 1)}/${time.getFullYear()}`;
+                    var gio1 = `${number_format(time.getHours())}:${number_format(time.getMinutes())}:${number_format(time.getSeconds())}`;
+
+                    var time = data[i].trang_thai[data[i].trang_thai.length-1].time;
+                    var ngay2 = `${number_format(time.getDate())}/${number_format(time.getMonth() + 1)}/${time.getFullYear()}`;
+                    var gio2 = `${number_format(time.getHours())}:${number_format(time.getMinutes())}:${number_format(time.getSeconds())}`;
+
+                    
+                    var trang_thai_hien_tai = data[i].trang_thai[data[i].trang_thai.length-1].trang_thai;
+        
+                    data[i].ngay_tao_don = ngay1;
+                    data[i].gio_tao = gio1;
+                    data[i].ngay_nhan = ngay2;
+                    data[i].gio_nhan = gio2;
+                    data[i].ten_nguoi_nhan = data[i].recipient_name;
+                    data[i].ten_nguoi_gui = data[i].send_name;
+                    
+                     
+                }
+                res.json({
+                    checkBag : true,
+                    data: data,
+                })
+            } else {
+                res.json({
+                    checkBag: false,
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    giao_that_bai(req, res, next) {
+        var postal_office_code = new ObjectId(req.user_data.postal_office_code);
+        var tu_ngay = req.body.tu_ngay;
+        var den_ngay = req.body.den_ngay;
+        var [day, month, year] = tu_ngay.split('/');
+        const startTime = new Date(`${year}/${month}/${day}`);
+        var [day, month, year] = den_ngay.split('/');
+        const endTime = new Date(`${year}/${month}/${parseInt(day)+1}`);
+        console.log(postal_office_code, startTime, endTime)
+
+        Parcels.find({
+            trang_thai: {
+                $elemMatch: {
+                    time: { $gte: startTime, $lte: endTime},
+                    postal_office_code: postal_office_code,
+                    trang_thai: "Giao thất bại"
+                }
+            }
+        })
+        .then(data => {
+            console.log(data)
+            if(data.length != 0) {
+                var number_format = function(number) {
+                    if(number.toString().length < 2){
+                        return `0${number.toString()}`;
+                    } else {
+                        return number;
+                    }
+                }
+                for(var i = 0; i< data.length; i++) {
+                    data[i] = data[i].toObject();
+                    var time = data[i].trang_thai[0].time;
+                    var ngay = `${number_format(time.getDate())}/${number_format(time.getMonth() + 1)}/${time.getFullYear()}`;
+                    var gio = `${number_format(time.getHours())}:${number_format(time.getMinutes())}:${number_format(time.getSeconds())}`;
+
+
+                    var vi_tri_hien_tai = data[i].trang_thai[data[i].trang_thai.length-1].vi_tri;
+                    var vi_tri_hien_tai_2 = data[i].trang_thai[data[i].trang_thai.length-1].postal_office_code;
+                    data[i].ngay = ngay;
+                    data[i].gio = gio;
+                    data[i].vi_tri_hien_tai = vi_tri_hien_tai;
+                    data[i].vi_tri_hien_tai_2 = vi_tri_hien_tai_2;
+                }
+                res.json({
+                    checkBag: true,
+                    data: data
+                })
+            } else {
+                res.json({
+                    checkBag: false,
+                })
+            }
+        })
+        .catch(err => console.log(err))
     }
 }
 

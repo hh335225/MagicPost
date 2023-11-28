@@ -41,7 +41,8 @@ const Parcel = new Schema({
                 trang_thai: {type: String},
                 time: {type: Date},
                 vi_tri: {type: String},
-                postal_office_code: {type: Schema.Types.ObjectId}
+                postal_office_code: {type: Schema.Types.ObjectId},
+
             }
         ], 
         default: [
@@ -52,7 +53,8 @@ const Parcel = new Schema({
                 postal_office_code: {type: Schema.Types.ObjectId}
             }
         ]
-    }
+    }, 
+    chuyen_don: {type: String}
 
 
 })

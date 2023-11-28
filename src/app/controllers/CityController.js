@@ -69,6 +69,30 @@ class CityController {
                 })
             })
     }
+
+    get_all_postal_code(req, res, next) {
+        var nameCity = req.params.city;
+        var nameDistrict = req.params.district;
+        var nameCommune = req.params.commune;
+        Cities.findOne({name: nameCity})
+            .then(city => {
+                console.log(city.districts);
+                var districts = city.districts;
+                districts.forEach(district => {
+                    if(district.name === nameDistrict) {
+                        var communes = district.communes;
+                        var warehouse_code = district.warehouse_code;
+                        communes.forEach(commune => {
+                            if(commune.name === nameCommune) {
+                                var postal_codes = commune.postal_code;
+                                postal_codes = postal_codes.concat(warehouse_code)
+                                res.json(postal_codes)
+                            }
+                        })    
+                    } 
+                })
+            })
+    }
 }
 
 export default new CityController;

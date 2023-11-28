@@ -19,6 +19,10 @@ router.get('/thong_tin_tui_hang/:code_tracking', transaction_staffController.tho
 router.get('/xac_nhan_chi_tiet_tui/:code_tracking', transaction_staffController.xac_nhan_chi_tiet_tui)
 router.post('/xac_nhan_item', transaction_staffController.xac_nhan_item)
 router.post('/cap_nhap_trang_thai', transaction_staffController.cap_nhap_trang_thai)
+router.get('/danh_sach_giao_thanh_cong', transaction_staffController.show_giao_thanh_cong)
+router.post('/danh_sach_giao_thanh_cong', transaction_staffController.giao_thanh_cong)
+router.get('/danh_sach_giao_that_bai', transaction_staffController.show_giao_that_bai)
+router.post('/danh_sach_giao_that_bai', transaction_staffController.giao_that_bai)
 router.get('/', transaction_staffController.show)
 
 export default router;

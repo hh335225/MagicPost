@@ -1,4 +1,4 @@
-console.log("chim");
+
 
 var citySelect_list = document.getElementsByClassName("citySelect");
     citySelect_list = Array.from(citySelect_list)
@@ -151,26 +151,50 @@ var citySelect_list = document.getElementsByClassName("citySelect");
         console.log(selectedCommune.parentNode.parentNode.getElementsByClassName("postal_codeSelect")[0]);
         var postal_codeSelect = selectedCommune.parentNode.parentNode.getElementsByClassName("postal_codeSelect")[0];
         if(postal_codeSelect) {
-            $.ajax({
-                url: `/cities/districts/${selectedCity.value}/commune/${selectedDistrict.value}/postal_code/${selectedCommune.value}`,
-                type: 'GET',
-                data: {}
-            })
-            .done(postal_codes => {
-                if(postal_codes) {
-                    postal_codeSelect.innerHTML = '<option value="code0">--Chọn Mã Bưu Chính--</option>';
-                    postal_codes.forEach(postal_code => {
-                        const option = document.createElement('option');
-                        option.value = postal_code;
-                        option.text = postal_code;
-                        postal_codeSelect.add(option);
-                    })
-    
-                }
-            })
-            .fail(err => {
-                console.log(err)
-            })
+            if(postal_codeSelect.classList.contains('all_postal_code')){
+                $.ajax({
+                    url: `/cities/districts/${selectedCity.value}/commune/${selectedDistrict.value}/postal_code_all/${selectedCommune.value}`,
+                    type: 'GET',
+                    data: {}
+                })
+                .done(postal_codes => {
+                    if(postal_codes) {
+                        postal_codeSelect.innerHTML = '<option value="code0">--Chọn Mã Bưu Chính--</option>';
+                        postal_codes.forEach(postal_code => {
+                            const option = document.createElement('option');
+                            option.value = postal_code;
+                            option.text = postal_code;
+                            postal_codeSelect.add(option);
+                        })
+        
+                    }
+                })
+                .fail(err => {
+                    console.log(err)
+                })
+            } else {
+                $.ajax({
+                    url: `/cities/districts/${selectedCity.value}/commune/${selectedDistrict.value}/postal_code/${selectedCommune.value}`,
+                    type: 'GET',
+                    data: {}
+                })
+                .done(postal_codes => {
+                    if(postal_codes) {
+                        postal_codeSelect.innerHTML = '<option value="code0">--Chọn Mã Bưu Chính--</option>';
+                        postal_codes.forEach(postal_code => {
+                            const option = document.createElement('option');
+                            option.value = postal_code;
+                            option.text = postal_code;
+                            postal_codeSelect.add(option);
+                        })
+        
+                    }
+                })
+                .fail(err => {
+                    console.log(err)
+                })
+            }
+            
         }
         
     }
