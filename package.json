@@ -31,7 +31,8 @@
     "express-session": "^1.17.3",
     "jquery": "^3.7.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.6.3"
+    "mongoose": "^7.6.3",
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

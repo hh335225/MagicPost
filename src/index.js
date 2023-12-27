@@ -70,6 +70,9 @@ app.engine(
         or: function(a, b) {
           if(a || b) return true;
           else return false;
+        },
+        eq: function(a, b) {
+          return (a === b);
         }
       }
     }));

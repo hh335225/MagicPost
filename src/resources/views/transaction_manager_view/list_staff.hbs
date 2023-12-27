@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!--
+    <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_manager.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+</head>
+</style>
+
+<body>
+
+    <div class="page_container">
+        <main class="main_content">
+            <div class="CRUD_container">
+                
+            </div>
+            <div class="list_container">
+                <table class="list_staff">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" name="all" id="check_all"></th>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Mật khẩu</th>
+                            <th>Chức vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data}}
+                        {{!-- {{#each this}} --}}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="check_list" id={{_id}} class="check_list">
+                                {{!-- {{this}} --}}
+                            </td>
+                            <td>
+                                {{this.name}}
+                            </td>
+                            <td>
+                                {{this.email}}
+                            </td>
+                            <td>
+                                {{this.username}}
+                            </td>
+                            <td>
+                                {{this.password}}
+                            </td>
+                            <td>
+                                {{#if (eq this.[role] "transaction_manager")}}
+                                Trưởng điểm giao dịch
+                                {{else}}
+                                Nhân viên giao dịch
+                                {{/if}}
+                            </td>
+
+                        </tr>
+                        {{!-- {{/each}} --}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

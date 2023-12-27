@@ -15,6 +15,12 @@
         {{> transaction_staff_header/header}}
     {{else if warehouse_staff_header}} 
         {{> warehouse_staff_header/header}}
+    {{else if warehouse_manager_header}} 
+        {{> warehouse_manager_header/header}}
+    {{else if transaction_manager_header}} 
+        {{> transaction_manager_header/header}}
+    {{else if manager_header}} 
+        {{> manager_header/header}}
     {{else if none_header}} 
         
     {{else}}
