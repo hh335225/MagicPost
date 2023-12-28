@@ -1220,6 +1220,29 @@ class TransactionManagerController {
         // console.log(log_username);
 
     }
+    deleteAccount(req, res, next) {
+        var token = req.cookies.token;
+        var user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        var data = req.body.list;
+
+        const indexToRemove = data.indexOf(user._id);
+
+        if (indexToRemove !== -1) {
+            data.splice(indexToRemove, 1);
+            // console.log(`Phần tử ${elementToRemove} đã bị xóa.`);
+        }
+        // console.log(data);
+        // console.log(user._id);
+        Users.deleteMany({_id: {$in: data}})
+        .then(number => {
+            res.json({
+                number: data.length,
+            })
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        })
+    }
 }
 
 export default new TransactionManagerController;

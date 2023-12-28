@@ -65,8 +65,8 @@
                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"
                                 onclick="cleanForm('addEmployeeModal')"><i class="material-icons">&#xE147;</i>
                                 <span>Thêm tài khoản</span></a>
-                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
-                                    class="material-icons">&#xE15C;</i> <span>Xóa</span></a>
+                            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"
+                                onclick="setValue('')"><i class="material-icons">&#xE15C;</i> <span>Xóa</span></a>
                         </div>
                     </div>
                 </div>
@@ -123,9 +123,9 @@
                                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"
                                                 onclick="prepareData('{{_id}}')"><i class="material-icons"
                                                     data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                                    class="material-icons" data-toggle="tooltip"
-                                                    title="Delete">&#xE872;</i></a>
+                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
+                                                onclick="setValue('{{_id}}')"><i class="material-icons"
+                                                    data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                         </td>
 
                                     </tr>
@@ -232,12 +232,13 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
+                        <input type="text" disabled readonly hidden>
                         <p>Bạn chắc chắn muốn xóa những tài khoản này?</p>
                         <p class="text-warning"><small>Hành động này không thể được hoàn tác.</small></p>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Thoát">
+                        <input type="submit" class="btn btn-danger" value="Xóa">
                     </div>
                 </form>
             </div>
@@ -246,6 +247,19 @@
 
 
 </body>
+
+<script>
+    function setValue(value) {
+        var temp = document.getElementById('deleteEmployeeModal');
+        var input = temp.querySelector('.modal-body input');
+        input.value = value;
+    }
+    function getValue() {
+        var temp = document.getElementById('deleteEmployeeModal');
+        var input = temp.querySelector('.modal-body input');
+        return input.value;
+    }
+</script>
 
 <script>
     function cleanForm(id) {
@@ -261,17 +275,14 @@
     }
 </script>
 
+{{!-- Add account --}}
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Chọn phần tử HTML mà bạn muốn ngăn chặn sự kiện mặc định
         var form = document.getElementById('addEmployeeModal');
 
-        // Bắt sự kiện (ví dụ: click) và ngăn chặn sự kiện mặc định
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            // console.log('Sự kiện đã bị ngăn chặn');
-            // Các hành động khác mà bạn muốn thực hiện sau khi ngăn chặn sự kiện mặc định
-            // var form = document.getElementById('addEmployeeModal');
             var name = form.querySelector('input.form-name').value;
             var email = form.querySelector('input.form-email').value;
             var username = form.querySelector('input.form-username').value;
@@ -322,6 +333,8 @@
     });
 </script>
 
+{{!-- Edit account --}}
+
 <script>
     function prepareData(id) {
         cleanForm('editEmployeeModal');
@@ -332,30 +345,30 @@
                 method: 'GET',
             }
         )
-        .done(response => {
-            console.log(response);
-            var name = response.name;
-            var email = response.email;
-            var username = response.username;
-            var password = response.password;
-            var form = document.getElementById('editEmployeeModal');
-            var form_id = form.querySelector('input.form-id');
-            var form_name = form.querySelector('input.form-name');
-            var form_email = form.querySelector('input.form-email');
-            var form_username = form.querySelector('input.form-username');
-            var form_password = form.querySelector('input.form-password');
-            form_id.value = id;
-            form_name.value = name;
-            form_email.value = email;
-            form_username.value = username;
-            form_password.value = password;
-        })
+            .done(response => {
+                console.log(response);
+                var name = response.name;
+                var email = response.email;
+                var username = response.username;
+                var password = response.password;
+                var form = document.getElementById('editEmployeeModal');
+                var form_id = form.querySelector('input.form-id');
+                var form_name = form.querySelector('input.form-name');
+                var form_email = form.querySelector('input.form-email');
+                var form_username = form.querySelector('input.form-username');
+                var form_password = form.querySelector('input.form-password');
+                form_id.value = id;
+                form_name.value = name;
+                form_email.value = email;
+                form_username.value = username;
+                form_password.value = password;
+            })
     }
 </script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        
+
         var form = document.getElementById('editEmployeeModal');
 
         // Bắt sự kiện (ví dụ: click) và ngăn chặn sự kiện mặc định
@@ -408,6 +421,53 @@
                     console.log(err);
                 })
 
+        });
+    });
+</script>
+
+{{!-- Delete account --}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var form = document.getElementById('deleteEmployeeModal');
+
+        // Bắt sự kiện (ví dụ: click) và ngăn chặn sự kiện mặc định
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            var tbody = document.querySelector('table tbody');
+            var inputs = tbody.querySelectorAll('.custom-checkbox input');
+            var list_id = [];
+            var value = getValue();
+            if (value == '') {
+                for (var e of inputs) {
+                    if (e.checked) {
+                        list_id.push(e.id);
+                    }
+                }
+            } else {
+                list_id.push(value);
+            }
+            if (!list_id.length) {
+                alert("Lỗi: Không có phần tử nào để xóa!");
+                location.reload();
+            } else {
+                $.ajax({
+                    url: '/transaction_manager/danh_sach_nhan_vien/xoa_tai_khoan',
+                    method: "DELETE",
+                    data: {
+                        list: list_id,
+                    }
+                })
+                    .done(res => {
+                        alert("Xóa thành công " + res.number + " phần tử.");
+                        location.reload();
+                    })
+                    .fail(err => {
+                        alert(err);
+                        location.reload();
+                    })
+            }
         });
     });
 </script>
