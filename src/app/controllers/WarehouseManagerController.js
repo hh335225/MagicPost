@@ -38,7 +38,7 @@ class WarehouseManagerController {
                         return 0;
                     })
                     console.log(data);
-                    res.render('./warehouse_manager_view/list_staff', { result, data, warehouse_manager_header });
+                    res.render('./warehouse_manager_view/list_staff', { result, data, warehouse_manager_header, noFooter: true });
 
                 });
             })

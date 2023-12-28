@@ -39,7 +39,7 @@ class TransactionManagerController {
                         }
                         return 0;
                     })
-                    res.render('./transaction_manager_view/list_staff', { result, data, transaction_manager_header });
+                    res.render('./transaction_manager_view/list_staff', { result, data, transaction_manager_header, noFooter: true });
 
                 });
             })

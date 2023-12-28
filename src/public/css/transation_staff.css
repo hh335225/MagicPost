@@ -109,7 +109,8 @@
   display: block;
   margin-bottom: 3px; }
 
-.customer_info select, input {
+.customer_info select,
+input {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -167,10 +168,13 @@
 .container_info_product table input {
   text-align: center; }
 
-.container_info_product table, th, td {
+.container_info_product table,
+th,
+td {
   border: 1px solid #ddd; }
 
-.container_info_product th, td {
+.container_info_product th,
+td {
   padding: 8px;
   text-align: center; }
 
@@ -745,3 +749,36 @@
 /* //de cuoi */
 .hidden {
   display: none !important; }
+
+@media screen and (max-width: 990px) {
+  .main_nav > li {
+    display: block;
+    position: relative; }
+  .full_container {
+    position: initial;
+    padding-top: 5px;
+    top: 90px; }
+  .page_container {
+    padding-top: 175px;
+    left: 0px;
+    top: 0px; }
+  .sidebar {
+    padding-top: 80px; }
+  .main_nav {
+    list-style-type: none; }
+  header.header .container .row {
+    display: block; }
+  .menu_item {
+    float: none;
+    vertical-align: middle; }
+  .header_title {
+    margin: 0px; } }
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    width: 150px;
+    overflow-x: auto; }
+  .sidebar_menu .nav_item {
+    margin-top: 15px !important; }
+  .page_container {
+    padding-left: 150px; } }

@@ -74,9 +74,9 @@ class Warehouse_staffController {
                         data[i].check_ = check_;
 
                     }
-                    res.render('./warehouse_staff_view/danh_sach_don', { checkProduct, data, warehouse_staff_header: !isManager, warehouse_manager_header: isManager });
+                    res.render('./warehouse_staff_view/danh_sach_don', { checkProduct, data, warehouse_staff_header: !isManager, warehouse_manager_header: isManager, noFooter: true });
                 } else {
-                    res.render('./warehouse_staff_view/danh_sach_don', { checkProduct, warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+                    res.render('./warehouse_staff_view/danh_sach_don', { checkProduct, warehouse_staff_header: !isManager, warehouse_manager_header: isManager , noFooter: true})
                 }
             })
             .catch(err => {
@@ -176,7 +176,7 @@ class Warehouse_staffController {
                         .then(data2 => {
                             if (data2) {
                                 data2 = data2.toObject();
-                                res.render('./warehouse_staff_view/tao_tui_hang', { data2, data, warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+                                res.render('./warehouse_staff_view/tao_tui_hang', { data2, data, warehouse_staff_header: !isManager, warehouse_manager_header: isManager , noFooter: true})
 
                             }
                         })
@@ -267,7 +267,7 @@ class Warehouse_staffController {
     }
 
     danh_sach_tui_di(req, res, next) {
-        res.render('./warehouse_staff_view/danh_sach_tui_di', { warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+        res.render('./warehouse_staff_view/danh_sach_tui_di', { warehouse_staff_header: !isManager, warehouse_manager_header: isManager, noFooter: true })
 
     }
     post_danh_sach_tui_di(req, res, next) {
@@ -343,7 +343,7 @@ class Warehouse_staffController {
 
     danh_sach_tui_nhan(req, res, next) {
 
-        res.render('./warehouse_staff_view/danh_sach_tui_nhan', { warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+        res.render('./warehouse_staff_view/danh_sach_tui_nhan', { warehouse_staff_header: !isManager, warehouse_manager_header: isManager, noFooter: true })
 
     }
     post_danh_sach_tui_nhan(req, res, next) {
@@ -451,7 +451,7 @@ class Warehouse_staffController {
                                 data_[i].vi_tri_hien_tai = data_[i].trang_thai[data_[i].trang_thai.length - 1].vi_tri;
                             }
 
-                            res.render('./warehouse_staff_view/thong_tin_tui_hang', { data1, data_, warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+                            res.render('./warehouse_staff_view/thong_tin_tui_hang', { data1, data_, warehouse_staff_header: !isManager, warehouse_manager_header: isManager , noFooter: true})
 
                         })
                 } else {
@@ -556,7 +556,7 @@ class Warehouse_staffController {
                             }
                         }
 
-                        res.render('./warehouse_staff_view/xac_nhan_chi_tiet_tui', { data1, product_list, none_header: true })
+                        res.render('./warehouse_staff_view/xac_nhan_chi_tiet_tui', { data1, product_list, none_header: true, noFooter: true })
                     })
             }).catch(err => {
                 res.status(500).send("loi SV")
@@ -677,16 +677,16 @@ class Warehouse_staffController {
 
                     Promise.all(promiseList)
                         .then(tmp => {
-                            res.render('./warehouse_staff_view/tra_cuu_don', { found_parcel, tracking_code, noi_gui, noi_nhan, trang_thai, list_trang_thai, data, warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+                            res.render('./warehouse_staff_view/tra_cuu_don', { found_parcel, tracking_code, noi_gui, noi_nhan, trang_thai, list_trang_thai, data, warehouse_staff_header: !isManager, warehouse_manager_header: isManager, noFooter: true })
                         })
 
                 } else {
-                    res.render('./warehouse_staff_view/tra_cuu_don', { found_parcel, tracking_code, warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+                    res.render('./warehouse_staff_view/tra_cuu_don', { found_parcel, tracking_code, warehouse_staff_header: !isManager, warehouse_manager_header: isManager, noFooter: true })
                 }
             })
             .catch(err => {
 
-                res.render('./warehouse_staff_view/tra_cuu_don', { found_parcel, tracking_code, warehouse_staff_header: !isManager, warehouse_manager_header: isManager })
+                res.render('./warehouse_staff_view/tra_cuu_don', { found_parcel, tracking_code, warehouse_staff_header: !isManager, warehouse_manager_header: isManager, noFooter: true })
             });
 
         // res.render('./transaction_staff_view/tra_cuu_don', {transaction_staff_header})
@@ -738,7 +738,7 @@ class Warehouse_staffController {
                             parcel.loai_hang = loai_hang.indexOf(parcel.loai_hang);
                             parcel.chi_dan_gui = chi_dan_gui.indexOf(parcel.chi_dan_gui);
                             console.log(parcel.chi_dan_gui, parcel.loai_hang);
-                            res.render('./transaction_staff_view/hoadon', { parcel, none_header: true })
+                            res.render('./transaction_staff_view/hoadon', { parcel, none_header: true, noFooter: true })
                         })
 
 

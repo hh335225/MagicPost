@@ -10,7 +10,7 @@ const ObjectId = mongoose.Types.ObjectId;
 // const transaction_staff_header = true;
 
 var isManager = false;
-
+var noFooter = true;
 
 class Transaction_staffController {
 
@@ -27,9 +27,9 @@ class Transaction_staffController {
             if(data) {
                 console.log(data)
                 data = data.toObject();
-                res.render('./transaction_staff_view/transaction_staff', {data, transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                res.render('./transaction_staff_view/transaction_staff', {data, transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
             } else {
-                res.render('./transaction_staff_view/transaction_staff', { transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                res.render('./transaction_staff_view/transaction_staff', { transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
             }
         })
         .catch(err => {
@@ -193,16 +193,16 @@ class Transaction_staffController {
                 
                 Promise.all(promiseList)
                 .then(tmp => {
-                    res.render('./transaction_staff_view/tra_cuu_don', {found_parcel,tracking_code,noi_gui, noi_nhan,trang_thai,list_trang_thai, data, transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                    res.render('./transaction_staff_view/tra_cuu_don', {found_parcel,tracking_code,noi_gui, noi_nhan,trang_thai,list_trang_thai, data, transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
                 })
                 
             }else {
-                res.render('./transaction_staff_view/tra_cuu_don', {found_parcel, tracking_code,transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                res.render('./transaction_staff_view/tra_cuu_don', {found_parcel, tracking_code,transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
             }
         })
         .catch(err => {
             
-            res.render('./transaction_staff_view/tra_cuu_don', {found_parcel, tracking_code, transaction_staff_header: !isManager, transaction_manager_header: isManager})
+            res.render('./transaction_staff_view/tra_cuu_don', {found_parcel, tracking_code, transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
         });
 
         // res.render('./transaction_staff_view/tra_cuu_don', {transaction_staff_header})
@@ -270,9 +270,9 @@ class Transaction_staffController {
                     data[i].check_ = check_;
                      
                 }
-                res.render('./transaction_staff_view/danh_sach_don', {checkProduct, data, transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                res.render('./transaction_staff_view/danh_sach_don', {checkProduct, data, transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
             } else {
-                res.render('./transaction_staff_view/danh_sach_don', {checkProduct, transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                res.render('./transaction_staff_view/danh_sach_don', {checkProduct, transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
             }
         })
         .catch(err => {
@@ -382,7 +382,7 @@ class Transaction_staffController {
                 .then(data2 => {
                     if(data2) {
                         data2 = data2.toObject();
-                        res.render('./transaction_staff_view/tao_tui_hang', {data2,  data,transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                        res.render('./transaction_staff_view/tao_tui_hang', {data2,  data,transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
                     }
                 })
                 .catch(err => {
@@ -469,7 +469,7 @@ class Transaction_staffController {
     }
 
     danh_sach_tui_di(req, res, next) {
-        res.render('./transaction_staff_view/danh_sach_tui_di', {transaction_staff_header: !isManager, transaction_manager_header: isManager})
+        res.render('./transaction_staff_view/danh_sach_tui_di', {transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
     }
     post_danh_sach_tui_di(req, res, next) {
         var tu_ngay = req.body.tu_ngay;
@@ -543,7 +543,7 @@ class Transaction_staffController {
     }
     
     danh_sach_tui_nhan(req, res, next) {
-        res.render('./transaction_staff_view/danh_sach_tui_nhan', {transaction_staff_header: !isManager, transaction_manager_header: isManager})
+        res.render('./transaction_staff_view/danh_sach_tui_nhan', {transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
     }
     post_danh_sach_tui_nhan(req, res, next) {
         var tu_ngay = req.body.tu_ngay;
@@ -693,7 +693,7 @@ class Transaction_staffController {
                     }
                 }
 
-                res.render('./transaction_staff_view/xac_nhan_chi_tiet_tui', {data1,product_list, none_header: true})
+                res.render('./transaction_staff_view/xac_nhan_chi_tiet_tui', {data1,product_list, none_header: true, noFooter})
             })
         }).catch(err => {
             res.status(500).send("loi SV")
@@ -811,7 +811,7 @@ class Transaction_staffController {
                     }
                     
 
-                    res.render('./transaction_staff_view/thong_tin_tui_hang', {data1, data_, transaction_staff_header: !isManager, transaction_manager_header: isManager})
+                    res.render('./transaction_staff_view/thong_tin_tui_hang', {data1, data_, transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
                 })
             } else {
                 res.status(500).send("loi SV");
@@ -873,11 +873,11 @@ class Transaction_staffController {
         
     }
     show_giao_thanh_cong(req, res, next) {
-        res.render('./transaction_staff_view/danh_sach_giao_thanh_cong', {transaction_staff_header: !isManager, transaction_manager_header: isManager})
+        res.render('./transaction_staff_view/danh_sach_giao_thanh_cong', {transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
     }
 
     show_giao_that_bai(req, res, next) {
-        res.render('./transaction_staff_view/danh_sach_giao_that_bai', {transaction_staff_header: !isManager, transaction_manager_header: isManager})
+        res.render('./transaction_staff_view/danh_sach_giao_that_bai', {transaction_staff_header: !isManager, transaction_manager_header: isManager, noFooter})
     }
 
     giao_thanh_cong(req, res, next) {
