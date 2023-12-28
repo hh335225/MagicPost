@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{!-- <link rel="stylesheet" href="home.css"> --}}
+    <link rel="stylesheet" href="/css/transation_staff.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+</head>
+<body>
+    
+    <div class="page_container">
+        <main class="main_content">
+            <div id="mainContent">
+                <div class="full_container">
+                    <div class="content_title">
+                        DANH SÁCH TÚI HÀNG ĐI
+                    </div>
+                    
+                    <div class="container_product_list">
+                        <div class="form_input_time">
+                            <div class="since_input">
+                                <div class="date-picker-container">
+                                    <label for="since_input">Từ ngày:</label>
+                                    <div class="picker_container">
+                                        <input type="text" name="since_input" class="date-picker-input" id="datepicker1">
+                                        <div class="calendar-icon" onclick="showCalendar1()">&#128197;</div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="to_input">
+                                <div class="date-picker-container">
+                                    <label for="to_input">Đến ngày:</label>
+                                    <div class="picker_container">
+                                        <input type="text" name="to_input" class="date-picker-input" id="datepicker2">
+                                        <div class="calendar-icon" onclick="showCalendar2()">&#128197;</div>
+                                    </div>               
+                                  </div>
+                            </div>
+                            <div class="btn_find_for_date">
+                                <div class="btn_tim" id="btn_tim">
+                                    <img src="/img/order-search.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav_bar_service">
+                            {{!-- <input type="button" value="Xóa" name="delete">
+                            <input type="button" value="Cap nhat trang thai"> --}}
+                            <!-- <input type="button" value="ALL"> -->
+                        </div>
+                        <div class="product_list" id="product_list">
+                            
+                        </div>
+                        <div id="error_note" style="display:;">
+                            <i style="color: red;">*Không tìm thấy túi hàng</i>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+<script>
+    var picker1 = new Pikaday({
+      field: document.getElementById('datepicker1'),
+      format: 'DD/MM/YYYY', // Định dạng ngày tháng
+      yearRange: [1900, moment().year()], // Phạm vi năm
+      showYearDropdown: true, // Hiển thị dropdown năm
+    });
+  
+    function showCalendar1() {
+      picker1.show();
+    }
+
+    var picker2 = new Pikaday({
+      field: document.getElementById('datepicker2'),
+      format: 'DD/MM/YYYY', // Định dạng ngày tháng
+      yearRange: [1900, moment().year()], // Phạm vi năm
+      showYearDropdown: true, // Hiển thị dropdown năm
+    });
+  
+    function showCalendar2() {
+      picker2.show();
+    }
+  </script>
+<script>
+    var tu_ngay = document.getElementById('datepicker1');
+    var den_ngay = document.getElementById('datepicker2');
+    var today = new Date();
+    tu_ngay.value = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
+    den_ngay.value = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;  
+</script>
+<script>
+    var load_data = function() {
+        var tu_ngay = document.getElementById('datepicker1').value;
+        var den_ngay = document.getElementById('datepicker2').value;
+        document.getElementById('product_list').innerHTML = ""
+
+        $.ajax({
+            url: '/warehouse_staff/danh_sach_tui_di',
+            method: 'POST',
+            data: {
+                tu_ngay: tu_ngay,
+                den_ngay: den_ngay
+            }
+        })
+        .done(res => {
+            if(res.checkBag) {
+                document.getElementById('error_note').style.display = "none"
+                document.getElementById('product_list').innerHTML = `
+                            <table id="product_list_table">
+                                <thead>
+                                    <tr>
+                                        <th>Mã số túi</th>
+                                        <th>Bưu cục nhận</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Trạng thái</th>
+                                        <th>Chi tiết túi hàng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>`
+
+                for(var i = 0; i < res.data.length; i++) {
+                        document.getElementsByTagName('tbody')[0].innerHTML = document.getElementsByTagName('tbody')[0].innerHTML + 
+                                `<tr>
+                                    <td>
+                                        <span>${res.data[i]._id}</span>
+                                    </td>
+                                    <td>
+                                        <span>${res.data[i].ma_buu_cuc_nhan}</span>
+                                        
+                                    </td>
+                                    <td>
+                                        <span>${res.data[i].ngay_tao_don}</span>
+                                        <span>${res.data[i].gio_tao}</span>
+                                    </td>
+                                    <td>${res.data[i].trang_thai_hien_tai}</td>
+                                    <td>
+                                        <div class="btn_xac_nhan_chi_tiet_tui ">
+                                            <input type="button" class="chi_tiet_tui" code=${res.data[i]._id} value="Chi tiết">
+                                        </div>
+                                    </td>
+                                </tr>`
+                        }
+
+                var chi_tiet_list = document.getElementsByClassName('chi_tiet_tui');
+                chi_tiet_list = Array.from(chi_tiet_list);
+                chi_tiet_list.forEach(chi_tiet => {
+                    chi_tiet.onclick = function() {
+                        var code = chi_tiet.getAttribute("code")
+                        console.log(code);
+                        location.href = `/warehouse_staff/thong_tin_tui_hang/${code}`
+                    }
+                })
+            } else {
+                document.getElementById('error_note').style.display = "block"
+            }
+        })
+        .fail(err => {
+            console.log(err)
+        })
+    }
+</script>
+<script>
+    $(document).ready(load_data())
+
+    $(document).ready(function() {
+        document.getElementById("btn_tim").onclick = function(event) {
+            load_data()
+        }
+    })
+</script>
+</html>
