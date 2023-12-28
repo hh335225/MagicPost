@@ -203,3 +203,9 @@
 
 .post-item .post-code {
   color: #004588; }
+
+@media screen and (max-width: 800px) {
+  .row-list-infomation {
+    display: block; }
+  .list-col {
+    max-width: 100%; } }

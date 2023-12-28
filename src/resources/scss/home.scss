@@ -515,3 +515,68 @@ ul {
 .slick-next:hover {
     background-color: #35353591;
 }
+
+@media screen and (max-width: 1100px) {
+    .general-footer .main-footer .footer-about {
+        padding: 0px 30px;
+    }
+
+    .general-footer .main-footer .footer-info {
+        padding: 0px 30px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .general-footer .main-footer .footer-about {
+        padding: 0px 20px;
+    }
+
+    .general-footer .main-footer .footer-info {
+        padding: 0px 20px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .general-footer .main-footer .footer-about {
+        padding: 0px 0px;
+    }
+
+    .general-footer .main-footer .footer-info {
+        padding: 0px 0px;
+    }
+
+    .general-footer .main-footer {
+        margin: 0px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .general-footer .main-footer {
+        display: block;
+    }
+
+    .general-footer .main-footer .footer-about {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .main-footer .footer-info div {
+        margin-left: auto;
+        margin-right: auto;
+        width: 85%;
+    }
+
+    .container-form-tracking .row {
+        display: block;
+    }
+
+    .impressive-figures .container .row {
+        display: block;
+    }
+
+    .impressive-figures {
+        margin-top: 250px;
+    }
+}
