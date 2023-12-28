@@ -22,4 +22,7 @@ export default function route(app) {
     app.use('/cities', citiesRoutes)
     app.use('/getDistance', distanceRoutes)
     app.use('/', homeRoutes);
+    app.use(function (req, res, next) {
+        res.status(404).render('404', {notFound: true});
+    });
 }

@@ -21,7 +21,7 @@
         {{> transaction_manager_header/header}}
     {{else if manager_header}} 
         {{> manager_header/header}}
-    {{else if none_header}} 
+    {{else if (or none_header notFound) }} 
         
     {{else}}
         {{> header}}
@@ -31,7 +31,7 @@
     {{{body}}}
 
 
-    {{#if (or none_header noFooter)}}
+    {{#if (or3 none_header noFooter notFound)}}
     
     {{else}}
         {{> footer}}

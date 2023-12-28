@@ -15,6 +15,7 @@ routes.get('/find_postal_items', homeController.postal_items)
 routes.post('/find_postal_items', homeController.find_postal_items)
 routes.get('/find_costs', homeController.costs)
 routes.get('/logout', homeController.logout)
+// routes.get('/:other', homeController.notFound)
 routes.get('/', homeController.show);
 
 export default routes;

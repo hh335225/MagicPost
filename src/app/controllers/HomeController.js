@@ -14,6 +14,10 @@ class HomeController {
         res.render('./home')
     }
 
+    notFound(req, res, next) {
+        res.status(404).render('404', {notFound: true});
+    }
+
     post_office(req, res, next) {
         res.render('./find_post_office')
     }
