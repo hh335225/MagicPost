@@ -24,6 +24,9 @@ router.post('/danh_sach_giao_thanh_cong', TransactionManagerController.giao_than
 router.get('/danh_sach_giao_that_bai', TransactionManagerController.show_giao_that_bai)
 router.post('/danh_sach_giao_that_bai', TransactionManagerController.giao_that_bai)
 router.get('/danh_sach_nhan_vien',TransactionManagerController.showList)
+router.post('/danh_sach_nhan_vien/them_nhan_vien',TransactionManagerController.addEmployee)
+router.get('/danh_sach_nhan_vien/thong_tin_tai_khoan/:id',TransactionManagerController.getAccount)
+router.post('/danh_sach_nhan_vien/sua_tai_khoan/:id',TransactionManagerController.editEmployee)
 router.get('/', TransactionManagerController.show)
 
 export default router;

@@ -903,28 +903,28 @@ td {
     display: none !important;
 }
 .list_container {
-    max-height: 600px;
-    overflow: hidden;
+    height: 500px;
+    overflow-y: auto;
 }
 // list_staff
 .list_staff {
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
     // margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: 10px;
+    // margin-right: 10px;
     // margin-right: 200px;
     align-items: center;
     overflow: auto;
+    margin: 0px !important;
 }
 
 .list_staff th,
 .list_staff td {
     border: 1px solid #ddd;
-    padding: 8px;
+    // padding: 8px;
 
 }
-
 .list_staff th {
     text-align: center;
     background-color: #f2f2f2;
@@ -940,5 +940,6 @@ td {
 .list_staff th:nth-child(1),
 .list_staff td:nth-child(1) {
   width: 2%;
-  padding:4px 8px 4px 0px;
+  text-align: center;
+//   padding:3px;
 }

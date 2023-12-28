@@ -746,21 +746,19 @@ td {
   display: none !important; }
 
 .list_container {
-  max-height: 600px;
-  overflow: hidden; }
+  height: 500px;
+  overflow-y: auto; }
 
 .list_staff {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
   align-items: center;
-  overflow: auto; }
+  overflow: auto;
+  margin: 0px !important; }
 
 .list_staff th,
 .list_staff td {
-  border: 1px solid #ddd;
-  padding: 8px; }
+  border: 1px solid #ddd; }
 
 .list_staff th {
   text-align: center;
@@ -775,4 +773,4 @@ td {
 .list_staff th:nth-child(1),
 .list_staff td:nth-child(1) {
   width: 2%;
-  padding: 4px 8px 4px 0px; }
+  text-align: center; }
