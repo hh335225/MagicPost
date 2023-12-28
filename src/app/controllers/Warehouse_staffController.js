@@ -12,7 +12,7 @@ class Warehouse_staffController {
     show(req, res, next) {
         var token = req.cookies.token;
         var user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        isManager = (user.role == 'warehouse_manager');
+        isManager = !(user.role == 'warehouse_staff');
         var postal_office_code = new ObjectId(req.user_data.postal_office_code);
         console.log(postal_office_code)
         function findProductList() {
