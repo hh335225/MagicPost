@@ -140,7 +140,7 @@
         </main>
     </div>
 
-    <div id="addEmployeeModal" class="modal fade">
+    <div id="addEmployeeModal" class="modal fade form-container">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -174,12 +174,13 @@
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Thoát">
                         <input type="submit" class="btn btn-success" value="Thêm">
                     </div>
+                    <div class="overlay" id="loadingOverlay"></div>
                 </form>
             </div>
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div id="editEmployeeModal" class="modal fade form-container">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -218,12 +219,13 @@
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Thoát">
                         <input type="submit" class="btn btn-info" value="Lưu">
                     </div>
+                    <div class="overlay" id="loadingOverlay"></div>
                 </form>
             </div>
         </div>
     </div>
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="deleteEmployeeModal" class="modal fade form-container">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -240,6 +242,7 @@
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Thoát">
                         <input type="submit" class="btn btn-danger" value="Xóa">
                     </div>
+                    <div class="overlay" id="loadingOverlay"></div>
                 </form>
             </div>
         </div>
@@ -278,11 +281,36 @@
 {{!-- Add account --}}
 
 <script>
+    function showOverlay(form_id) {
+        var form = document.getElementById(form_id);
+        form.classList.add('form-loading');
+        
+        const overlay = form.querySelector('#loadingOverlay');
+        overlay.style.display = 'block';
+
+        // const loadingText = document.createElement('div');
+        // loadingText.className = 'loading-text';
+        // loadingText.innerHTML = 'Đang xử lý...';
+        // overlay.appendChild(loadingText);
+    }
+
+    function hideOverlay(form_id) {
+        var form = document.getElementById(form_id);
+        form.classList.remove('form-loading');
+        
+        const overlay = form.querySelector('#loadingOverlay');
+        overlay.style.display = 'none';
+    }
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         var form = document.getElementById('addEmployeeModal');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
+            const form_id = 'addEmployeeModal';
+            showOverlay(form_id);
             var name = form.querySelector('input.form-name').value;
             var email = form.querySelector('input.form-email').value;
             var username = form.querySelector('input.form-username').value;
@@ -309,6 +337,7 @@
                             var error = e.nextElementSibling;
                             error.innerHTML = '';
                         }
+                        hideOverlay(form_id);
                         if (res.name != '') {
                             var error = form.querySelector('input.form-name').nextElementSibling;
                             error.innerHTML = res.name;
@@ -374,6 +403,8 @@
         // Bắt sự kiện (ví dụ: click) và ngăn chặn sự kiện mặc định
         form.addEventListener('submit', function (event) {
             event.preventDefault();
+            const form_id = 'editEmployeeModal';
+            showOverlay(form_id);
             var id = form.querySelector('input.form-id').value;
             var name = form.querySelector('input.form-name').value;
             var email = form.querySelector('input.form-email').value;
@@ -396,6 +427,7 @@
                         // console.log('Hahahaha')
                         location.reload();
                     } else {
+                        hideOverlay(form_id);
                         var temp = form.querySelectorAll('.form-group input');
                         for (let e of temp) {
                             var error = e.nextElementSibling;
@@ -435,6 +467,7 @@
         // Bắt sự kiện (ví dụ: click) và ngăn chặn sự kiện mặc định
         form.addEventListener('submit', function (event) {
             event.preventDefault();
+            
             var tbody = document.querySelector('table tbody');
             var inputs = tbody.querySelectorAll('.custom-checkbox input');
             var list_id = [];
@@ -448,6 +481,7 @@
             } else {
                 list_id.push(value);
             }
+            showOverlay('deleteEmployeeModal');
             if (!list_id.length) {
                 alert("Lỗi: Không có phần tử nào để xóa!");
                 location.reload();

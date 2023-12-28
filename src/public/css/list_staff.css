@@ -43,7 +43,8 @@ body {
   float: left;
   margin-top: 2px; }
 
-table.table tr th, table.table tr td {
+table.table tr th,
+table.table tr td {
   border-color: #e9e9e9;
   padding: 8px;
   vertical-align: middle; }
@@ -113,7 +114,8 @@ table.table .avatar {
 .pagination li a:hover {
   color: #666; }
 
-.pagination li.active a, .pagination li.active a.page-link {
+.pagination li.active a,
+.pagination li.active a.page-link {
   background: #03A9F4; }
 
 .pagination li.active a:hover {
@@ -186,7 +188,9 @@ table.table .avatar {
 .modal .modal-dialog {
   max-width: 400px; }
 
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+.modal .modal-header,
+.modal .modal-body,
+.modal .modal-footer {
   padding: 20px 30px; }
 
 .modal .modal-content {
@@ -247,3 +251,26 @@ label {
 .error {
   color: red;
   font-size: 12px; }
+
+.form-container {
+  position: relative; }
+
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000; }
+
+.form-loading {
+  pointer-events: none; }
+
+.loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px; }
