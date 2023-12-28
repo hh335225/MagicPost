@@ -5,6 +5,7 @@ import managerRoutes from './manager.routes.js'
 import transaction_staffRoutes from './transaction_staff.routes.js'
 import transaction_managerRoutes from './transaction_manager.routes.js'
 import warehouse_staffRoutes from './warehouse_staff.routes.js'
+import warehouse_managerRoutes from './warehouse_manager.routes.js'
 import citiesRoutes from './city.routes.js'
 import distanceRoutes from './getDistance.routes.js'
 import { checkHeaderFooter } from '../app/middleware/checkHeader.js' // muốn trang nào có header thì thêm cái này
@@ -14,7 +15,8 @@ import { checkHeaderFooter } from '../app/middleware/checkHeader.js' // muốn t
 export default function route(app) {
     app.use('/warehouse_staff', authentication.checkWarehouseStaff, warehouse_staffRoutes)
     app.use('/transaction_staff',authentication.checkTransactionStaff, transaction_staffRoutes)
-    app.use('/transaction_manager',authentication.checkTransactionStaff, transaction_managerRoutes)
+    app.use('/transaction_manager',authentication.checkTransactionManager, transaction_managerRoutes)
+    app.use('/warehouse_manager',authentication.checkWarehouseManager, warehouse_managerRoutes)
     app.use('/manager', authentication.checkManager,managerRoutes)
     app.use('/login',loginRoutes)
     app.use('/cities', citiesRoutes)

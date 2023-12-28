@@ -121,10 +121,10 @@
                                             {{this.password}}
                                         </td>
                                         <td>
-                                            {{#if (eq this.[role] "transaction_manager")}}
-                                            Trưởng điểm giao dịch
+                                            {{#if (eq this.[role] "warehouse_manager")}}
+                                            Trưởng kho
                                             {{else}}
-                                            Nhân viên giao dịch
+                                            Nhân viên kho
                                             {{/if}}
                                         </td>
                                         <td>
@@ -324,7 +324,7 @@
             var username = form.querySelector('input.form-username').value;
             var password = form.querySelector('input.form-password').value;
             $.ajax({
-                url: '/transaction_manager/danh_sach_nhan_vien/them_nhan_vien',
+                url: '/warehouse_manager/danh_sach_nhan_vien/them_nhan_vien',
                 method: 'POST',
                 data: {
                     name: name,
@@ -378,7 +378,7 @@
 
         $.ajax(
             {
-                url: '/transaction_manager/danh_sach_nhan_vien/thong_tin_tai_khoan/' + id,
+                url: '/warehouse_manager/danh_sach_nhan_vien/thong_tin_tai_khoan/' + id,
                 method: 'GET',
             }
         )
@@ -419,7 +419,7 @@
             var username = form.querySelector('input.form-username').value;
             var password = form.querySelector('input.form-password').value;
             $.ajax({
-                url: '/transaction_manager/danh_sach_nhan_vien/sua_tai_khoan/' + id,
+                url: '/warehouse_manager/danh_sach_nhan_vien/sua_tai_khoan/' + id,
                 method: 'POST',
                 data: {
                     name: name,
@@ -495,7 +495,7 @@
                 location.reload();
             } else {
                 $.ajax({
-                    url: '/transaction_manager/danh_sach_nhan_vien/xoa_tai_khoan',
+                    url: '/warehouse_manager/danh_sach_nhan_vien/xoa_tai_khoan',
                     method: "DELETE",
                     data: {
                         list: list_id,

@@ -1023,12 +1023,25 @@ class TransactionManagerController {
         var user_id = user._id;
         var post_code = user.postal_office_code;
         var list = ["transaction_staff", "transaction_manager"];
+        // let post_name = "Ahihi";
+        Postal_office.find({ _id: post_code })
+            .then(result => result.map(result => result.toObject()))
+            .then((result) => {
+                Users.find({ role: { $in: list }, postal_office_code: post_code }).then(data => {
+                    data = data.map(data => data.toObject());
+                    data.sort((a, b) => {
+                        if (a.role == "transaction_manager") {
+                            return -1;
+                        }
+                        if (b.role == "transaction_manager") {
+                            return 1;
+                        }
+                        return 0;
+                    })
+                    res.render('./transaction_manager_view/list_staff', { result, data, transaction_manager_header });
 
-        Users.find({ role: { $in: list }, postal_office_code: post_code }).then(data => {
-            console.log(data);
-            data = data.map(data => data.toObject());
-            res.render('./transaction_manager_view/list_staff', { data, transaction_manager_header });
-        });
+                });
+            })
     }
     addEmployee(req, res, next) {
         // console.log(req.body);
@@ -1233,15 +1246,15 @@ class TransactionManagerController {
         }
         // console.log(data);
         // console.log(user._id);
-        Users.deleteMany({_id: {$in: data}})
-        .then(number => {
-            res.json({
-                number: data.length,
+        Users.deleteMany({ _id: { $in: data } })
+            .then(number => {
+                res.json({
+                    number: data.length,
+                })
             })
-        })
-        .catch(err => {
-            res.status(500).send(err);
-        })
+            .catch(err => {
+                res.status(500).send(err);
+            })
     }
 }
 
