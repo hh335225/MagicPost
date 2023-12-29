@@ -90,3 +90,15 @@
 .login-container .btn-login:hover {
     background-color: #035cba;
 }
+
+.form-group .togglePassword {
+    float: right;
+    position: relative;
+    z-index: 2;
+    margin-left: -25px;
+    margin-top: -25px;
+    margin-right: 10px;
+    color:#999;
+    // width: 10px;
+    // height: 5px;
+}

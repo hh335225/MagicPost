@@ -341,6 +341,18 @@ label {
     font-size: 24px;
 }
 
+.form-group .togglePassword {
+    float: right;
+    position: relative;
+    z-index: 2;
+    margin-left: -25px;
+    margin-top: -25px;
+    margin-right: 10px;
+    color:#999;
+    // width: 10px;
+    // height: 5px;
+}
+
 @media screen and (max-width: 830px) {
     main.main_content .full_container .table-title > .row {
         display: block;
