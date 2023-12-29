@@ -62,13 +62,13 @@
                                 <div>
                                     DANH SÁCH NHÂN VIÊN
                                 </div>
-                                <span >
+                                <span>
                                     {{#each result}}
                                     <h6 style="font-weight: 500;">{{this.name}}</h6>
                                     {{/each}}
                                 </span>
                             </div>
-                            
+
                         </div>
                         <div class="col-sm-6">
                             <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"
@@ -176,6 +176,8 @@
                         <div class="form-group">
                             <label>Mật khẩu</label>
                             <input type="password" class="form-control form-password" required>
+                            <i class="fa fa-eye fa-lg togglePassword" aria-hidden="true"
+                                onclick="showHidePassword('addEmployeeModal')"></i>
                             <span class="error"></span>
                         </div>
                     </div>
@@ -221,6 +223,8 @@
                         <div class="form-group">
                             <label>Mật khẩu</label>
                             <input type="password" class="form-control form-password" required>
+                            <i class="fa fa-eye fa-lg togglePassword" aria-hidden="true"
+                                onclick="showHidePassword('editEmployeeModal')"></i>
                             <span class="error"></span>
                         </div>
                     </div>
@@ -278,6 +282,12 @@
         var form = document.getElementById(id);
         var input = form.querySelectorAll('input.form-control');
         var error = form.querySelectorAll('.error');
+        var toggle = form.querySelector('.togglePassword');
+        var password = form.querySelector('input.form-password');
+        toggle.classList.remove('fa-eye');
+        toggle.classList.remove('fa-eye-slash');
+        toggle.classList.add('fa-eye');
+        password.type = 'password';
         for (let e of input) {
             e.value = '';
         }
@@ -293,7 +303,7 @@
     function showOverlay(form_id) {
         var form = document.getElementById(form_id);
         form.classList.add('form-loading');
-        
+
         const overlay = form.querySelector('#loadingOverlay');
         overlay.style.display = 'block';
 
@@ -306,7 +316,7 @@
     function hideOverlay(form_id) {
         var form = document.getElementById(form_id);
         form.classList.remove('form-loading');
-        
+
         const overlay = form.querySelector('#loadingOverlay');
         overlay.style.display = 'none';
     }
@@ -357,7 +367,7 @@
                             var error = form.querySelector('input.form-username').nextElementSibling;
                             error.innerHTML = res.username;
                         } else if (res.password != '') {
-                            var error = form.querySelector('input.form-password').nextElementSibling;
+                            var error = form.querySelector('input.form-password').nextElementSibling.nextElementSibling;
                             error.innerHTML = res.password;
                         }
                     }
@@ -452,7 +462,7 @@
                             var error = form.querySelector('input.form-username').nextElementSibling;
                             error.innerHTML = res.username;
                         } else if (res.password != '') {
-                            var error = form.querySelector('input.form-password').nextElementSibling;
+                            var error = form.querySelector('input.form-password').nextElementSibling.nextElementSibling;
                             error.innerHTML = res.password;
                         }
                     }
@@ -476,7 +486,7 @@
         // Bắt sự kiện (ví dụ: click) và ngăn chặn sự kiện mặc định
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            
+
             var tbody = document.querySelector('table tbody');
             var inputs = tbody.querySelectorAll('.custom-checkbox input');
             var list_id = [];
@@ -513,6 +523,24 @@
             }
         });
     });
+</script>
+
+{{!-- Show/Hide password --}}
+<script>
+    function showHidePassword(id) {
+        var form = document.getElementById(id);
+        var toggle = form.querySelector('.togglePassword');
+        var password = form.querySelector('input.form-password');
+        if (password.type == 'password') {
+            password.type = 'text';
+            toggle.classList.remove('fa-eye');
+            toggle.classList.add('fa-eye-slash');
+        } else {
+            password.type = 'password';
+            toggle.classList.remove('fa-eye-slash');
+            toggle.classList.add('fa-eye');
+        }
+    }
 </script>
 
 </html>
