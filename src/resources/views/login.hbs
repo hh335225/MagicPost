@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MagicPost</title>
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <div class="login-container">
         <div class="form-container">
@@ -15,38 +18,42 @@
                     Sai tên đăng nhập hoặc sai mật khẩu !
                 </div>
                 <div class="form-group form_group">
-                    <input type="text" rules="required" class="form-control" id="userName" name="username" autocomplete="off" placeholder="Tên đăng nhập">
+                    <input type="text" rules="required" class="form-control" id="userName" name="username"
+                        autocomplete="off" placeholder="Tên đăng nhập">
                     <p class="form_mess" style="color: red;text-align: left;"></p>
                 </div>
                 <div class="form-group form_group">
-                    <input type="password" rules="required|min:6" class="form-control" id="password" name="password" autocomplete="off" placeholder="Mật khẩu">
+                    <input type="password" rules="required|min:6" class="form-control" id="password" name="password"
+                        autocomplete="off" placeholder="Mật khẩu">
+                    <i class="fa fa-eye fa-lg togglePassword" aria-hidden="true"
+                        onclick="showHidePassword()"></i>
                     <p class="form_mess" style="color: red;text-align: left;"></p>
                 </div>
                 <button type="submit" class="btn-login" id="login">Đăng Nhập</button>
             </form>
-            
+
         </div>
     </div>
 </body>
 <script src='/js/validation_form.js'></script>
 <script>
-    
-    var form = new Validator('#formLogin');   
-        form.onSubmit = function(formData) {
-            console.log(formData)
-            login();
-        }
-        
-        function login() {
-            $.ajax({
-                url: '/login',
-                type: 'POST',
-                data: {
-                    username: $('#userName').val(),
-                    password: $('#password').val() 
-                }
-            })
-            .done(function(data) {
+
+    var form = new Validator('#formLogin');
+    form.onSubmit = function (formData) {
+        console.log(formData)
+        login();
+    }
+
+    function login() {
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: {
+                username: $('#userName').val(),
+                password: $('#password').val()
+            }
+        })
+            .done(function (data) {
                 if (data.token) {
                     setCookie('token', data.token, 1);
                     // luu thong tin nguoi dung vao localstorage de xuat ra man hinh
@@ -54,21 +61,39 @@
                     var nextUrl = data.role;
                     window.location.href = nextUrl;
                 } else {
-                    $('#error_login').show();                
-                }        
+                    $('#error_login').show();
+                }
             })
-            .fail(function(err) {
+            .fail(function (err) {
                 console.log("loi")
-                {{!-- console.log(err) --}}
-            }) 
-            .always(function(data) {
+                { { !--console.log(err) --} }
+            })
+            .always(function (data) {
                 var inputs = $('[name][rules]');
-                for(var input of inputs) {
-                    input.oninput = function(e) {
+                for (var input of inputs) {
+                    input.oninput = function (e) {
                         $('#error_login').hide();
                     }
                 }
             })
-        }
+    }
 </script>
+
+{{!-- Show/Hide password --}}
+<script>
+    function showHidePassword() {
+        var toggle = document.querySelector('.togglePassword');
+        var password = document.querySelector('input#password');
+        if (password.type == 'password') {
+            password.type = 'text';
+            toggle.classList.remove('fa-eye');
+            toggle.classList.add('fa-eye-slash');
+        } else {
+            password.type = 'password';
+            toggle.classList.remove('fa-eye-slash');
+            toggle.classList.add('fa-eye');
+        }
+    }
+</script>
+
 </html>
