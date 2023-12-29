@@ -145,8 +145,16 @@ class Transaction_staffController {
     tra_cuu_don(req, res, next) {
 
         var tracking_code = req.query.code_tracking;
+        // tracking_code = tracking_code.trim();
+        if (tracking_code === undefined || tracking_code === null) {
+            tracking_code = '';
+        } else {
+            tracking_code = tracking_code.trim();
+        }
         console.log(tracking_code);
-
+        var token = req.cookies.token;
+        var user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        isManager = !(user.role == 'transaction_staff');
 
         var number_format = function(number) {
             if(number.toString().length < 2){
@@ -156,7 +164,7 @@ class Transaction_staffController {
             }
         }
         var found_parcel = false;
-        Parcels.findOne({_id: tracking_code})
+        Parcels.findOne({_id: tracking_code })
         .then(data => {
             if(data) {
                 found_parcel = true;
@@ -386,16 +394,18 @@ class Transaction_staffController {
                     }
                 })
                 .catch(err => {
-                    res.status(500).send("Loi SV");
+                    res.status(500).send(err);
                 })
                 
             } else {
-                res.status(500).send("Loi server")
+                // res.status(500).send("Loi server")
+                // Không tìm thấy đơn hàng
+                res.redirect('/transaction_staff/danh_sach_don');
             }
 
         })
         .catch(err => {
-            res.status(500).send("Loi server!!!")
+            res.status(500).send(err)
         })
     }
 

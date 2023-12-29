@@ -182,11 +182,12 @@ class Warehouse_staffController {
                         })
                         .catch(err => {
                             console.log(err)
-                            res.status(500).send("Loi SV");
+                            res.status(500).send(err);
                         })
 
                 } else {
-                    res.status(500).send("Loi server")
+                    // res.status(500).send("Loi server")
+                    res.redirect('/warehouse_staff');
                 }
 
             })
@@ -629,8 +630,12 @@ class Warehouse_staffController {
 
     tra_cuu_don(req, res, next) {
         var tracking_code = req.query.code_tracking;
-        console.log(tracking_code);
 
+        if (tracking_code === undefined || tracking_code === null) {
+            tracking_code = '';
+        } else {
+            tracking_code = tracking_code.trim();
+        }
 
         var number_format = function (number) {
             if (number.toString().length < 2) {
@@ -640,7 +645,7 @@ class Warehouse_staffController {
             }
         }
         var found_parcel = false;
-        Parcels.findOne({ _id: tracking_code })
+        Parcels.findOne({ _id: tracking_code  })
             .then(data => {
                 if (data) {
                     found_parcel = true;

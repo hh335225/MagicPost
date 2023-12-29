@@ -15,7 +15,7 @@ const transaction_manager_header = true;
 class TransactionManagerController {
 
     show(req, res, next) {
-        res.redirect('/transaction_staff');
+        res.redirect('/transaction_staff/tra_cuu_don');
     }
 
     showList(req, res, next) {
